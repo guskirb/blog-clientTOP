@@ -1,7 +1,20 @@
 .layout__container {
+    display: grid;
+    grid-template-rows: 1fr 10fr;
+    min-height: 100vh;
+}
+
+.nav {
+    grid-row: 1 / 2;
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100vw;
-    flex-flow: column;
+    justify-content: center;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

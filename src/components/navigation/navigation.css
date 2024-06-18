@@ -1,15 +1,21 @@
 .nav__container {
-    display: flex;
-    width: 1200px;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
+  display: flex;
+  width: 1200px;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 
 .nav__header {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 .nav__header h1 {
-    margin: 0;
+  margin: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+  .nav__container {
+    width: 95%;
+  }
 }

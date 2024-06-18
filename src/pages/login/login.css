@@ -1,0 +1,22 @@
+.form__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+}
