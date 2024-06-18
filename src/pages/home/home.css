@@ -16,24 +16,37 @@
   gap: 10px;
 }
 
-.grid__item1{
-  background-color: black;
+.grid__item1 {
+  display: flex;
   grid-row: 1 / 3;
   grid-column: 1 / 2;
+  background-size: cover;
 }
 
 .grid__item2 {
+  display: flex;
   background-color: black;
   grid-row: 1 / 2;
   grid-column: 2 / 3;
+  background-size: cover;
 }
 
 .grid__item3 {
+  display: flex;
   background-color: black;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
+  background-size: cover;
 }
 
+.post__title {
+  color: white;
+  align-self: flex-end;
+  margin: 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.336);
+  width: 100%;
+}
 
 @media only screen and (max-width: 1200px) {
   .home__container {

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./home.css";
 import Spinner from "../../components/spinner/spinner";
+import unescape from "validator/lib/unescape";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -18,7 +19,7 @@ export default function Home() {
   const listPosts = posts.map((post) => (
     <Link to={`/post/${post._id}`} key={post._id}>
       <h1>{post.title}</h1>
-      <p>{post.post}</p>
+      <p>{unescape(post.post)}</p>
     </Link>
   ));
 
@@ -29,9 +30,30 @@ export default function Home() {
   return (
     <div className="home">
       <div className="grid">
-        <div className="grid__item1"></div>
-        <div className="grid__item2"></div>
-        <div className="grid__item3"></div>
+        <div
+          className="grid__item1"
+          style={{
+            backgroundImage: `url(${unescape(posts[0].image_url)})`,
+          }}
+        >
+          <h2 className="post__title">{posts[0].title}</h2>
+        </div>
+        <div
+          className="grid__item2"
+          style={{
+            backgroundImage: `url(${unescape(posts[1].image_url)})`,
+          }}
+        >
+          <h3 className="post__title">{posts[1].title}</h3>
+        </div>
+        <div
+          className="grid__item3"
+          style={{
+            backgroundImage: `url(${unescape(posts[2].image_url)})`,
+          }}
+        >
+          <h3 className="post__title">{posts[2].title}</h3>
+        </div>
       </div>
       {listPosts}
     </div>

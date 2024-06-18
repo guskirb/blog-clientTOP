@@ -5,6 +5,10 @@
   height: 100%;
 }
 
+h2 {
+  align-self: flex-start;
+}
+
 form {
   display: flex;
   flex-flow: column;
