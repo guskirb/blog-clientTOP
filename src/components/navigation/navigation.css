@@ -1,0 +1,15 @@
+.nav__container {
+    display: flex;
+    width: 1200px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav__header {
+    margin-right: auto;
+}
+
+.nav__header h1 {
+    margin: 0;
+}
