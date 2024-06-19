@@ -7,16 +7,17 @@ export default function SignUp() {
       <form action="" method="POST">
         <h2>Sign Up</h2>
         <label htmlFor="username">Username:</label>
-        <input type="text" name="username" placeholder="Enter a username" />
+        <input type="text" name="username" placeholder="Enter a username" autoComplete="new-username"/>
         <label htmlFor="email">Email:</label>
-        <input type="email" name="email" placeholder="Enter an email" />
+        <input type="email" name="email" placeholder="Enter an email" autoComplete="email"/>
         <label htmlFor="password">Password:</label>
-        <input type="password" name="password" placeholder="Enter password" />
+        <input type="password" name="password" placeholder="Enter password" autoComplete="new-password"/>
         <label htmlFor="confirmPassword">Confirm Password:</label>
         <input
           type="confirmPassword"
           name="confirmPassword"
           placeholder="Confirm password"
+          autoComplete="new-password"
         />
         <button>Sign Up</button>
         <p>

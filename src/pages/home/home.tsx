@@ -61,7 +61,6 @@ export default function Home() {
           <h3 className="post__title">{posts[2].title}</h3>
         </Link>
       </div>
-      {listPosts}
     </div>
   );
 }

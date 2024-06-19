@@ -11,9 +11,10 @@ export default function LogIn() {
           type="text"
           name="username"
           placeholder="Enter username or email"
+          autoComplete="username"
         />
         <label htmlFor="password">Password:</label>
-        <input type="password" name="password" placeholder="Enter password" />
+        <input type="password" name="password" placeholder="Enter password" autoComplete="current-password"/>
         <button>Log In</button>
         <p>
           Dont have an account? <Link to="/signup">Sign Up</Link>
