@@ -18,8 +18,18 @@ export default function Home() {
 
   const listPosts = posts.map((post) => (
     <Link to={`/post/${post._id}`} key={post._id}>
-      <h1>{post.title}</h1>
-      <p>{unescape(post.post)}</p>
+      <div className="post_container">
+        <div
+          className="post_image"
+          style={{
+            backgroundImage: `url(${unescape(post.image_url)})`,
+          }}
+        ></div>
+        <div className="post_header">
+          <h2>{post.title}</h2>
+          <p>{post.date_formatted}</p>
+        </div>
+      </div>
     </Link>
   ));
 
@@ -61,6 +71,11 @@ export default function Home() {
           <h3 className="post__title">{posts[2].title}</h3>
         </Link>
       </div>
+      <div className="recent__title">
+        <h2 className="recent-header">Recent Posts</h2>
+        <div className="recent-line"></div>
+      </div>
+      <div className="posts_grid_container">{listPosts}</div>
     </div>
   );
 }

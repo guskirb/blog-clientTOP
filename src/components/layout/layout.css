@@ -18,9 +18,3 @@ main {
   display: flex;
   justify-content: center;
 }
-
-@media only screen and (max-width: 1200px) {
-  main {
-    width: 95%;
-  }
-}

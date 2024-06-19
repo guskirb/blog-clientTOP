@@ -38,8 +38,8 @@ export default function Post() {
           <h3>{post.date_formatted}</h3>
           <h3>BY {post.author.username.toUpperCase()}</h3>
         </div>
-        <p>{unescape(post.post)}</p>
       </div>
+        <p>{unescape(post.post)}</p>
     </div>
   );
 }
