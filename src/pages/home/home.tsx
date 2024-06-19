@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import unescape from "validator/lib/unescape";
 import "./home.css";
 import Spinner from "../../components/spinner/spinner";
-import unescape from "validator/lib/unescape";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -30,30 +30,36 @@ export default function Home() {
   return (
     <div className="home">
       <div className="grid">
-        <div
+        <Link
+          to={`/post/${posts[0]._id}`}
+          key={posts[0]._id}
           className="grid__item1"
           style={{
             backgroundImage: `url(${unescape(posts[0].image_url)})`,
           }}
         >
           <h2 className="post__title">{posts[0].title}</h2>
-        </div>
-        <div
+        </Link>
+        <Link
+          to={`/post/${posts[1]._id}`}
+          key={posts[1]._id}
           className="grid__item2"
           style={{
             backgroundImage: `url(${unescape(posts[1].image_url)})`,
           }}
         >
           <h3 className="post__title">{posts[1].title}</h3>
-        </div>
-        <div
+        </Link>
+        <Link
+          to={`/post/${posts[2]._id}`}
+          key={posts[2]._id}
           className="grid__item3"
           style={{
             backgroundImage: `url(${unescape(posts[2].image_url)})`,
           }}
         >
           <h3 className="post__title">{posts[2].title}</h3>
-        </div>
+        </Link>
       </div>
       {listPosts}
     </div>

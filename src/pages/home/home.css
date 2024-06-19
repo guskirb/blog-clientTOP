@@ -47,9 +47,3 @@
   background-color: rgba(0, 0, 0, 0.336);
   width: 100%;
 }
-
-@media only screen and (max-width: 1200px) {
-  .home__container {
-    width: 95%;
-  }
-}
