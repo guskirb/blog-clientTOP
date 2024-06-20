@@ -8,7 +8,7 @@ interface Props {
 
 export const AuthProvider = ({ children }: Props) => {
   const [auth, setAuth] = useState({});
-
+  
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
