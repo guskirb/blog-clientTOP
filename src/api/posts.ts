@@ -7,7 +7,7 @@ export function getPosts() {
     .catch((error) => error.response);
 }
 
-export function getPost(postId) {
+export function getPost(postId: string) {
   return axios
     .get(`/posts/${postId}`)
     .then((response) => response.data.post)

@@ -21,7 +21,7 @@ const schema = z
   });
 
 type FormFields = z.infer<typeof schema>;
-type data = {
+type Data = {
   username: string;
   email: string;
   password: string;
@@ -38,7 +38,7 @@ export default function SignUp() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data: data) => {
+  const onSubmit: SubmitHandler<FormFields> = async (data: Data) => {
     try {
       delete data.confirm;
       let response = await registerAccount(data);
