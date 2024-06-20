@@ -1,22 +1,17 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import unescape from "validator/lib/unescape";
 import "./home.css";
 import Spinner from "../../components/spinner/spinner";
+import { getPosts } from "../../api/posts";
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true as boolean);
+  const { data: posts, isLoading } = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPosts,
+  });
 
-  useEffect(() => {
-    axios.get("https://blog-api-guskirb.adaptable.app/posts").then((data) => {
-      setPosts(data.data.posts);
-      setLoading(false);
-    });
-  }, []);
-
-  const listPosts = posts.map((post) => (
+  const listPosts = posts?.map((post) => (
     <Link to={`/post/${post._id}`} key={post._id}>
       <div className="post_container">
         <div
@@ -33,7 +28,7 @@ export default function Home() {
     </Link>
   ));
 
-  if (loading) {
+  if (isLoading) {
     return <Spinner />;
   }
 

@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 import unescape from "validator/lib/unescape";
+import { getPost } from "../../api/posts";
 import "./post.css";
 
 import Spinner from "../../components/spinner/spinner";
 
 export default function Post() {
-  const [post, setPost] = useState("");
-  const [loading, setLoading] = useState(true as boolean);
   let { postId } = useParams();
+  const { data: post, isLoading } = useQuery({
+    queryKey: ["post"],
+    queryFn: () => getPost(postId),
+  });
 
-  useEffect(() => {
-    axios
-      .get(`https://blog-api-guskirb.adaptable.app/posts/${postId}`)
-      .then((data) => {
-        setPost(data.data.post);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return <Spinner />;
   }
 
@@ -39,7 +32,7 @@ export default function Post() {
           <h3>BY {post.author.username.toUpperCase()}</h3>
         </div>
       </div>
-        <p>{unescape(post.post)}</p>
+      <p>{unescape(post.post)}</p>
     </div>
   );
 }
