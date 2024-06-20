@@ -3,11 +3,13 @@ import axios from "./axios";
 export function getPosts() {
   return axios
     .get("/posts")
-    .then((data) => data.data.posts);
+    .then((response) => response.data.posts)
+    .catch((error) => error.response);
 }
 
 export function getPost(postId) {
   return axios
     .get(`/posts/${postId}`)
-    .then((data) => data.data.post);
+    .then((response) => response.data.post)
+    .catch((error) => error.response);
 }

@@ -1,4 +1,20 @@
 import moment from "moment";
+import axios from "./axios";
+
+export function logIn(data) {
+  return axios
+    .post("/users/login", data)
+    .then((response) => response.data)
+    .catch((error) => error.response);
+}
+
+export function registerAccount(data) {
+  console.log(data)
+  return axios
+    .post("/users/register", data)
+    .then((response) => response.data)
+    .catch((error) => error.response);
+}
 
 export function setLocalStorage(responseObj) {
   const expires = moment().add(responseObj.expires);
@@ -13,7 +29,7 @@ export function logout() {
 }
 
 // isLoggedIn() {
-//     return 
+//     return
 // }
 
 export function getExpiration() {

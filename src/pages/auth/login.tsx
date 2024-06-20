@@ -1,22 +1,48 @@
 import { Link } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { logIn, setLocalStorage } from "../../api/auth";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Spinner from "../../components/spinner/spinner";
 import "./form.css";
 
-type FormFields = {
-  username: string;
-  password: string;
-};
+const schema = z.object({
+  username: z.string().min(1, { message: "User is required" }),
+  password: z
+    .string()
+    .min(5, { message: "Password must contain at least 5 characters" }),
+});
+
+type FormFields = z.infer<typeof schema>;
 
 export default function LogIn() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<FormFields>();
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<FormFields>({
+    resolver: zodResolver(schema),
+  });
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    try {
+      let response = await logIn(data);
+      if (response.status === 400) {
+        throw new Error();
+      } else {
+        setLocalStorage(response);
+      }
+    } catch (err) {
+      setError("password", {
+        message: "Username or password is incorrect",
+      });
+    }
   };
+
+  if (isSubmitting) {
+    return <Spinner />;
+  }
 
   return (
     <div className="form__container">
@@ -24,9 +50,7 @@ export default function LogIn() {
         <h2>Log In</h2>
         <label htmlFor="username">User:</label>
         <input
-          {...register("username", {
-            required: "Username or email is required",
-          })}
+          {...register("username")}
           type="text"
           name="username"
           placeholder="Enter username or email"
@@ -37,13 +61,7 @@ export default function LogIn() {
         )}
         <label htmlFor="password">Password:</label>
         <input
-          {...register("password", {
-            required: "Password is required",
-            minLength: {
-              value: 5,
-              message: "Password must contain at least 5 characters",
-            },
-          })}
+          {...register("password")}
           type="password"
           name="password"
           placeholder="Enter password"

@@ -9,8 +9,8 @@ import Spinner from "../../components/spinner/spinner";
 export default function Post() {
   let { postId } = useParams();
   const { data: post, isLoading } = useQuery({
-    queryKey: ["post"],
-    queryFn: () => getPost(postId),
+    queryKey: ["post", parseInt(postId!)],
+    queryFn: () => getPost(postId!),
   });
 
   if (isLoading) {
