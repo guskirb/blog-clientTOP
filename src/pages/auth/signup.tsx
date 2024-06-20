@@ -17,7 +17,6 @@ export default function SignUp() {
           type="confirmPassword"
           name="confirmPassword"
           placeholder="Confirm password"
-          autoComplete="new-password"
         />
         <button>Sign Up</button>
         <p>
