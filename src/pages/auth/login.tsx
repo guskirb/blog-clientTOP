@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,6 +18,8 @@ type FormFields = z.infer<typeof schema>;
 
 export default function LogIn() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from.pathname || "/";
   const { setAuth }: any = useAuth();
   const {
     register,
@@ -36,7 +38,7 @@ export default function LogIn() {
       } else {
         auth.setLocalStorage(response);
         setAuth(response);
-        navigate("/", { replace: true });
+        navigate(from, { replace: true });
       }
     } catch (err) {
       setError("password", {

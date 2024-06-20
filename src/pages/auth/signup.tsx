@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import auth from "../../api/auth";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import useAuth from "../../hooks/useAuth";
 import Spinner from "../../components/spinner/spinner";
 import "./form.css";
 
@@ -30,6 +31,7 @@ type Data = {
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const { setAuth }: any = useAuth();
   const {
     register,
     handleSubmit,
@@ -47,6 +49,7 @@ export default function SignUp() {
         throw new Error();
       } else {
         auth.setLocalStorage(response);
+        setAuth(response);
         navigate("/", { replace: true });
       }
     } catch (err) {

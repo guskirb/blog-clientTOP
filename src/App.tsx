@@ -6,7 +6,8 @@ import LogIn from "./pages/auth/login";
 import SignUp from "./pages/auth/signup";
 import Layout from "./components/layout/layout";
 import Editor from "./pages/editor/Editor";
-import RequireAuth from "./components/require.auth";
+import RequireAuth from "./components/auth/require.auth";
+import PersistLogin from "./components/auth/persist.login";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,27 +15,32 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/post/:postId",
-          element: <Post />,
-        },
-        {
-          path: "/login",
-          element: <LogIn />,
-        },
-        {
-          path: "/signup",
-          element: <SignUp />,
-        },
-        {
-          element: <RequireAuth />,
+          element: <PersistLogin />,
           children: [
             {
-              path: "/admin",
-              element: <Editor />,
+              path: "/",
+              element: <Home />,
+            },
+            {
+              path: "/post/:postId",
+              element: <Post />,
+            },
+            {
+              path: "/login",
+              element: <LogIn />,
+            },
+            {
+              path: "/signup",
+              element: <SignUp />,
+            },
+            {
+              element: <RequireAuth />,
+              children: [
+                {
+                  path: "/admin",
+                  element: <Editor />,
+                },
+              ],
             },
           ],
         },
