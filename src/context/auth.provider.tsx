@@ -6,7 +6,7 @@ interface Props {
   children?: ReactNode;
 }
 
-export function AuthProvider({ children }: Props) {
+export const AuthProvider = ({ children }: Props) => {
   const [auth, setAuth] = useState({});
 
   return (
@@ -14,4 +14,4 @@ export function AuthProvider({ children }: Props) {
       {children}
     </AuthContext.Provider>
   );
-}
+};

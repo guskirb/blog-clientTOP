@@ -1,10 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useContext } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import auth from "../../api/auth";
-import { AuthContext } from "../../context/auth.provider";
+import useAuth from "../../hooks/useAuth";
 import Spinner from "../../components/spinner/spinner";
 import "./form.css";
 
@@ -19,7 +18,7 @@ type FormFields = z.infer<typeof schema>;
 
 export default function LogIn() {
   const navigate = useNavigate();
-  const { setAuth }: any = useContext(AuthContext);
+  const { setAuth }: any = useAuth();
   const {
     register,
     handleSubmit,
