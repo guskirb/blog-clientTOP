@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { logIn, setLocalStorage } from "../../api/auth";
+import { useContext } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import auth from "../../api/auth";
+import { AuthContext } from "../../context/auth.provider";
 import Spinner from "../../components/spinner/spinner";
 import "./form.css";
 
@@ -16,6 +18,8 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 export default function LogIn() {
+  const navigate = useNavigate();
+  const { setAuth }: any = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -27,11 +31,13 @@ export default function LogIn() {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      let response = await logIn(data);
+      let response = await auth.logIn(data);
       if (response.status === 400) {
         throw new Error();
       } else {
-        setLocalStorage(response);
+        auth.setLocalStorage(response);
+        setAuth(response);
+        navigate("/", { replace: true });
       }
     } catch (err) {
       setError("password", {
