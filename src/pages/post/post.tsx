@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import unescape from "validator/lib/unescape";
 import { getPost } from "../../api/posts";
@@ -13,12 +13,12 @@ export default function Post() {
     queryKey: ["post", parseInt(postId!)],
     queryFn: () => getPost(postId!),
   });
-
+  console.log(post)
   if (isLoading) {
     return <Spinner />;
   }
 
-  return (
+  return post.status !== 400 ? (
     <div className="post">
       <div
         className="image"
@@ -35,5 +35,7 @@ export default function Post() {
       </div>
       <p>{parse(unescape(post.post))}</p>
     </div>
+  ) : (
+    <Navigate to={"/"} />
   );
 }
