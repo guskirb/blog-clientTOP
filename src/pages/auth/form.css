@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-form {
+.auth_form {
   display: flex;
   flex-flow: column;
   align-items: center;

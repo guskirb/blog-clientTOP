@@ -53,7 +53,7 @@ export default function LogIn() {
 
   return (
     <div className="form__container">
-      <form action="" method="POST" onSubmit={handleSubmit(onSubmit)}>
+      <form action="" method="POST" onSubmit={handleSubmit(onSubmit)} className="auth_form">
         <h2>Log In</h2>
         <label htmlFor="username">User:</label>
         <input

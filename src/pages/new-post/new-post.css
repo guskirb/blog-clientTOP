@@ -1,0 +1,27 @@
+.new-post__container {
+  width: 1200px;
+}
+
+.tox-tinymce {
+  width: 100%;
+}
+
+.post__form {
+  display: flex;
+  flex-flow: column;
+}
+
+.new-post__input {
+    box-sizing: border-box;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    height: 40px;
+    padding-inline: 10px;
+    width: 50%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .new-post__container {
+    width: 90%;
+  }
+}

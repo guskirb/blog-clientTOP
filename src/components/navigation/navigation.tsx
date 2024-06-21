@@ -13,7 +13,7 @@ export default function Navigation() {
       <Link to="/">Home</Link>
       {auth.user ? (
         <>
-          <h3>Welcome {auth.user.username}</h3>
+          <Link to="/new-post">New Post</Link>
           <Link to="/logout">Log Out</Link>
         </>
       ) : (
