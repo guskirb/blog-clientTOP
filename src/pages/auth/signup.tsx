@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import auth from "../../api/auth";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import AuthUser from "../../api/auth";
 import useAuth from "../../hooks/useAuth";
 import Spinner from "../../components/spinner/spinner";
 import "./form.css";
@@ -44,11 +44,11 @@ export default function SignUp() {
   const onSubmit: SubmitHandler<FormFields> = async (data: Data) => {
     try {
       delete data.confirm;
-      let response = await auth.registerAccount(data);
+      let response = await AuthUser.registerAccount(data);
       if (response.status === 400) {
         throw new Error();
       } else {
-        auth.setLocalStorage(response);
+        AuthUser.setLocalStorage(response);
         setAuth(response);
         navigate("/", { replace: true });
       }

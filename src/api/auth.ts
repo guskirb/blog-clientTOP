@@ -13,7 +13,7 @@ type Data = {
   confirm?: string;
 };
 
-class Auth {
+class AuthUser {
   constructor() {}
 
   logIn(data: Data) {
@@ -37,7 +37,7 @@ class Auth {
     localStorage.setItem("expires", JSON.stringify(expires.valueOf()));
   }
 
-  logout() {
+  logOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("expires");
   }
@@ -57,4 +57,4 @@ class Auth {
   }
 }
 
-export default new Auth();
+export default new AuthUser();

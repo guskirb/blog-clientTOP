@@ -8,6 +8,7 @@ import Layout from "./components/layout/layout";
 import Editor from "./pages/editor/Editor";
 import RequireAuth from "./components/auth/require.auth";
 import PersistLogin from "./components/auth/persist.login";
+import LogOut from "./pages/auth/logout";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,6 +33,10 @@ function App() {
             {
               path: "/signup",
               element: <SignUp />,
+            },
+            {
+              path: "/logout",
+              element: <LogOut />,
             },
             {
               element: <RequireAuth />,

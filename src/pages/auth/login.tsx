@@ -2,7 +2,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import auth from "../../api/auth";
+import AuthUser from "../../api/auth";
 import useAuth from "../../hooks/useAuth";
 import Spinner from "../../components/spinner/spinner";
 import "./form.css";
@@ -32,11 +32,11 @@ export default function LogIn() {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      let response = await auth.logIn(data);
+      let response = await AuthUser.logIn(data);
       if (response.status === 400) {
         throw new Error();
       } else {
-        auth.setLocalStorage(response);
+        AuthUser.setLocalStorage(response);
         setAuth(response);
         navigate(from, { replace: true });
       }

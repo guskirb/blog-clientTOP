@@ -1,20 +1,25 @@
 import { Outlet } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import { getUser } from "../../api/users";
 import Spinner from "../spinner/spinner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function PersistLogin() {
-  const { setAuth }: any = useAuth();
-  const { data: user, isLoading } = useQuery({
-    queryKey: ["user"],
-    queryFn: getUser,
-  });
+  const { auth, setAuth }: any = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setAuth(user);
-  }, [user]);
+    const verifyUser = async () => {
+      try {
+        const response = await getUser();
+        setAuth(response);
+      } catch (err) {
+        console.log(err);
+      }
+      setIsLoading(false);
+    };
+    !auth.user ? verifyUser() : setIsLoading(false);
+  }, []);
 
   if (isLoading) {
     return <Spinner />;
