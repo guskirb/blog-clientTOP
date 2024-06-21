@@ -21,7 +21,7 @@ export default function Home() {
           }}
         ></div>
         <div className="post_header">
-          <h2>{post.title}</h2>
+          <h2>{unescape(post.title)}</h2>
           <p>{post.date_formatted}</p>
         </div>
       </div>
@@ -43,7 +43,7 @@ export default function Home() {
             backgroundImage: `url(${unescape(posts[0].image_url)})`,
           }}
         >
-          <h2 className="post__title">{posts[0].title}</h2>
+          <h2 className="post__title">{unescape(posts[0].title)}</h2>
         </Link>
         <Link
           to={`/post/${posts[1]._id}`}
@@ -53,7 +53,7 @@ export default function Home() {
             backgroundImage: `url(${unescape(posts[1].image_url)})`,
           }}
         >
-          <h3 className="post__title">{posts[1].title}</h3>
+          <h3 className="post__title">{unescape(posts[1].title)}</h3>
         </Link>
         <Link
           to={`/post/${posts[2]._id}`}
@@ -63,7 +63,7 @@ export default function Home() {
             backgroundImage: `url(${unescape(posts[2].image_url)})`,
           }}
         >
-          <h3 className="post__title">{posts[2].title}</h3>
+          <h3 className="post__title">{unescape(posts[2].title)}</h3>
         </Link>
       </div>
       <div className="recent__title">

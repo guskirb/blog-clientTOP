@@ -26,13 +26,12 @@ export default function NewPost() {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-    let response = await newPost(data);
-    console.log(response);
-    if (response.status === 401){
+      let response = await newPost(data);
+      if (response.status === 401) {
         setError("root", {
-            message: "You must be an admin to make a new post",
-          });
-    }
+          message: "You must be an admin to make a new post",
+        });
+      }
     } catch (err) {
       setError("root", {
         message: "You must be an admin to make a new post",
@@ -42,7 +41,12 @@ export default function NewPost() {
 
   return (
     <div className="new-post__container">
-      <form action="" method="POST" onSubmit={handleSubmit(onSubmit)} className="post__form">
+      <form
+        action=""
+        method="POST"
+        onSubmit={handleSubmit(onSubmit)}
+        className="post__form"
+      >
         <label htmlFor="title">Title:</label>
         <input
           {...register("title")}
@@ -62,7 +66,7 @@ export default function NewPost() {
           name="image_url"
           id="image_url"
         />
-         {errors.image_url && (
+        {errors.image_url && (
           <span className="error-message">{errors.image_url.message}</span>
         )}
         <label htmlFor="post">Post:</label>
