@@ -7,7 +7,6 @@ import SignUp from "./pages/auth/signup";
 import Layout from "./components/layout/layout";
 import RequireAuth from "./components/auth/require.auth";
 import PersistLogin from "./components/auth/persist.login";
-import LogOut from "./pages/auth/logout";
 import NewPost from "./pages/new-post/new-post";
 import EditPost from "./pages/edit-post/edit-post";
 
@@ -34,10 +33,6 @@ function App() {
             {
               path: "/signup",
               element: <SignUp />,
-            },
-            {
-              path: "/logout",
-              element: <LogOut />,
             },
             {
               element: <RequireAuth />,
