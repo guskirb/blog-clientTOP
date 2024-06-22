@@ -1,4 +1,4 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import unescape from "validator/lib/unescape";
 import { getPost } from "../../api/posts";
@@ -8,18 +8,21 @@ import "./post.css";
 import Spinner from "../../components/spinner/spinner";
 
 export default function Post() {
-  let { postId } = useParams();
+  const { postId } = useParams();
   const { data: post, isLoading } = useQuery({
     queryKey: ["post", parseInt(postId!)],
     queryFn: () => getPost(postId!),
   });
-  console.log(post)
+
   if (isLoading) {
     return <Spinner />;
   }
 
   return post.status !== 400 ? (
     <div className="post">
+      <Link to={`/edit-post/${postId}`} state={{ post: post }}>
+        <button>Edit</button>
+      </Link>
       <div
         className="image"
         style={{

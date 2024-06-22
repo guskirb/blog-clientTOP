@@ -9,6 +9,7 @@ import RequireAuth from "./components/auth/require.auth";
 import PersistLogin from "./components/auth/persist.login";
 import LogOut from "./pages/auth/logout";
 import NewPost from "./pages/new-post/new-post";
+import EditPost from "./pages/edit-post/edit-post";
 
 function App() {
   const router = createBrowserRouter([
@@ -44,6 +45,10 @@ function App() {
                 {
                   path: "/new-post",
                   element: <NewPost />,
+                },
+                {
+                  path: "/edit-post/:postId",
+                  element: <EditPost />,
                 },
               ],
             },

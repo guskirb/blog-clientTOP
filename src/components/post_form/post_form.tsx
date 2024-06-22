@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import { Editor } from "@tinymce/tinymce-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import "./post_form.css"
+import unescape from "validator/lib/unescape";
+import "./post_form.css";
 
 const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
@@ -12,7 +13,7 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>;
 
-export default function PostForm({ onSubmit }) {
+export default function PostForm({ onSubmit, post }) {
   const {
     register,
     handleSubmit,
@@ -38,6 +39,7 @@ export default function PostForm({ onSubmit }) {
           type="text"
           name="title"
           id="title"
+          defaultValue={post ? unescape(post.title) : ""}
         />
         {errors.title && (
           <span className="error-message">{errors.title.message}</span>
@@ -49,6 +51,7 @@ export default function PostForm({ onSubmit }) {
           type="text"
           name="image_url"
           id="image_url"
+          defaultValue={post ? unescape(post.image_url) : ""}
         />
         {errors.image_url && (
           <span className="error-message">{errors.image_url.message}</span>
@@ -56,12 +59,10 @@ export default function PostForm({ onSubmit }) {
         <label htmlFor="post">Post:</label>
         <Editor
           apiKey={process.env.TINYMCE_KEY}
-          onEditorChange={(newValue, editor) => {
+          initialValue={post ? unescape(post.post) : ""}
+          onEditorChange={(newValue) => {
             setValue("post", newValue, { shouldValidate: true });
           }}
-          //   onInit={(evt, editor) => {
-          //     setText(editor.getContent({ format: "text" }));
-          //   }}
           init={{
             body_class: "text_editor",
             height: 500,
@@ -100,6 +101,7 @@ export default function PostForm({ onSubmit }) {
           id="post"
           name="post"
           style={{ display: "none" }}
+          defaultValue={post ? unescape(post.post) : ""}
         />
         {errors.post && (
           <span className="error-message">{errors.post.message}</span>
