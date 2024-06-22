@@ -15,28 +15,31 @@ export default function Navigation() {
 
   return (
     <div className="nav__container">
-      <Link to="/" className="nav__header">
-        <h1>Blog</h1>
-      </Link>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
+      <div>
+        <Link to="/" className="nav__header">
+          <h1>Blog</h1>
+        </Link>
+      </div>
+      <div>
+        <button>All</button>
+        <button>Tech</button>
+      </div>
       {auth.user ? (
-        <>
+        <div className="auth-buttons">
           <Link to="/new-post">
             <button>New Post</button>
           </Link>
-          <button onClick={onLogout}>Log Out</button>
-        </>
+          <button className="pill-button" onClick={onLogout}>Log Out</button>
+        </div>
       ) : (
-        <>
+        <div className="auth-buttons">
           <Link to="/login">
-            <button>Log In</button>
+            <button className="pill-button">LOG IN</button>
           </Link>
           <Link to="/signup">
-            <button>Sign Up</button>
+            <button className="pill-button">SIGN UP</button>
           </Link>
-        </>
+        </div>
       )}
     </div>
   );

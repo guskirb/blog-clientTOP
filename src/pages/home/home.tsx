@@ -32,40 +32,59 @@ export default function Home() {
     return <Spinner />;
   }
 
+  if (!posts) {
+    return <div>There are no posts</div>;
+  }
+
   return (
     <div className="home">
-      <div className="grid">
-        <Link
-          to={`/post/${posts[0]._id}`}
-          key={posts[0]._id}
-          className="grid__item1"
-          style={{
-            backgroundImage: `url(${unescape(posts[0].image_url)})`,
-          }}
-        >
-          <h2 className="post__title">{unescape(posts[0].title)}</h2>
-        </Link>
-        <Link
-          to={`/post/${posts[1]._id}`}
-          key={posts[1]._id}
-          className="grid__item2"
-          style={{
-            backgroundImage: `url(${unescape(posts[1].image_url)})`,
-          }}
-        >
-          <h3 className="post__title">{unescape(posts[1].title)}</h3>
-        </Link>
-        <Link
-          to={`/post/${posts[2]._id}`}
-          key={posts[2]._id}
-          className="grid__item3"
-          style={{
-            backgroundImage: `url(${unescape(posts[2].image_url)})`,
-          }}
-        >
-          <h3 className="post__title">{unescape(posts[2].title)}</h3>
-        </Link>
-      </div>
+      {posts.length >= 3 ? (
+        <div className="grid">
+          <Link
+            to={`/post/${posts[0]._id}`}
+            key={posts[0]._id}
+            className="grid__item1"
+            style={{
+              backgroundImage: `url(${unescape(posts[0].image_url)})`,
+            }}
+          >
+            <h2 className="post__title">{unescape(posts[0].title)}</h2>
+          </Link>
+          <Link
+            to={`/post/${posts[1]._id}`}
+            key={posts[1]._id}
+            className="grid__item2"
+            style={{
+              backgroundImage: `url(${unescape(posts[1].image_url)})`,
+            }}
+          >
+            <h3 className="post__title">{unescape(posts[1].title)}</h3>
+          </Link>
+          <Link
+            to={`/post/${posts[2]._id}`}
+            key={posts[2]._id}
+            className="grid__item3"
+            style={{
+              backgroundImage: `url(${unescape(posts[2].image_url)})`,
+            }}
+          >
+            <h3 className="post__title">{unescape(posts[2].title)}</h3>
+          </Link>
+        </div>
+      ) : (
+        <div className="main__post">
+          <Link
+            to={`/post/${posts[0]._id}`}
+            key={posts[0]._id}
+            classNam="main-post1"
+            style={{
+              backgroundImage: `url(${unescape(posts[0].image_url)})`,
+            }}
+          >
+            <h2 className="post__title">{unescape(posts[0].title)}</h2>
+          </Link>
+        </div>
+      )}
       <div className="recent__title">
         <h2 className="recent-header">Recent Posts</h2>
         <div className="recent-line"></div>

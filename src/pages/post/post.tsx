@@ -27,24 +27,22 @@ export default function Post() {
 
   return post.status !== 400 ? (
     <div className="post">
-      <Link to={`/edit-post/${postId}`} state={{ post: post }}>
+      {/* <Link to={`/edit-post/${postId}`} state={{ post: post }}>
         <button>Edit</button>
       </Link>
-      <button onClick={onDelete}>Delete</button>
+      <button onClick={onDelete}>Delete</button> */}
+      <div className="title">
+        <p>{post.date_formatted}</p>
+        <h2>{unescape(post.title)}</h2>
+        <h3>{post.author.username.toUpperCase()}</h3>
+      </div>
       <div
         className="image"
         style={{
           backgroundImage: `url(${unescape(post.image_url)})`,
         }}
       ></div>
-      <div className="title">
-        <h2>{unescape(post.title)}</h2>
-        <div className="sub_header">
-          <h3>{post.date_formatted}</h3>
-          <h3>BY {post.author.username.toUpperCase()}</h3>
-        </div>
-      </div>
-      <p>{parse(unescape(post.post))}</p>
+      {parse(unescape(post.post))}
     </div>
   ) : (
     <Navigate to={"/"} />

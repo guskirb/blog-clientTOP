@@ -10,6 +10,7 @@ const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
   image_url: z.string().min(1, { message: "Image is required" }),
   post: z.string().min(1, { message: "Post is required" }),
+  public: z.boolean(),
 });
 
 type FormFields = z.infer<typeof schema>;
@@ -110,6 +111,17 @@ export default function PostForm({ onSubmit, post, rootErrors }) {
         {errors.post && (
           <span className="error-message">{errors.post.message}</span>
         )}
+        <div className="public-checkbox">
+          <label htmlFor="public" className="public-label">
+            Publish:
+          </label>
+          <input
+            {...register("public")}
+            type="checkbox"
+            className="checkbox"
+            defaultChecked={post ? post.public : true}
+          />
+        </div>
         <button>Post</button>
         {rootErrors?.root && (
           <span className="error-message">{rootErrors?.root.message}</span>
