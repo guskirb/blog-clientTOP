@@ -3,7 +3,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Spinner from "../spinner/spinner";
 import { newComment } from "../../api/comments";
-import "./comment-box.css";
+import "./comment.css";
 
 const schema = z.object({
   comment: z.string().min(1, { message: "Comment is required" }),
@@ -39,14 +39,14 @@ export default function CommentBox({ postId }) {
 
   if (isSubmitting) {
     return (
-      <div className="comment__container">
+      <div className="comment-form__container">
         <Spinner />
       </div>
     );
   }
 
   return (
-    <div className="comment__container">
+    <div className="comment-form__container">
       <form
         action=""
         method="POST"
