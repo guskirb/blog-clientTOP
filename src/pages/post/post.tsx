@@ -4,6 +4,7 @@ import unescape from "validator/lib/unescape";
 import { getPost } from "../../api/posts";
 import parse from "html-react-parser";
 import { deletePost } from "../../api/posts";
+import CommentBox from "../../components/comment/comment-box";
 import "./post.css";
 
 import Spinner from "../../components/spinner/spinner";
@@ -43,6 +44,7 @@ export default function Post() {
         }}
       ></div>
       {parse(unescape(post.post))}
+      <CommentBox postId={postId} />
     </div>
   ) : (
     <Navigate to={"/"} />
