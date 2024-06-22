@@ -1,6 +1,7 @@
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { newPost } from "../../api/posts";
 import PostForm from "../../components/post_form/post_form";
 
@@ -13,6 +14,12 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 export default function NewPost() {
+  const {
+    setError,
+    formState: { errors },
+  } = useForm<FormFields>({
+    resolver: zodResolver(schema),
+  });
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
@@ -32,5 +39,5 @@ export default function NewPost() {
     }
   };
 
-  return <PostForm onSubmit={onSubmit} />;
+  return <PostForm onSubmit={onSubmit} post={null} rootErrors={errors} />;
 }

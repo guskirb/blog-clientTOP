@@ -3,6 +3,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import unescape from "validator/lib/unescape";
+import Spinner from "../spinner/spinner";
 import "./post_form.css";
 
 const schema = z.object({
@@ -13,16 +14,19 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>;
 
-export default function PostForm({ onSubmit, post }) {
+export default function PostForm({ onSubmit, post, rootErrors }) {
   const {
     register,
     handleSubmit,
-    setError,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     resolver: zodResolver(schema),
   });
+
+  if (isSubmitting) {
+    return <Spinner />;
+  }
 
   return (
     <div className="new-post__container">
@@ -107,8 +111,8 @@ export default function PostForm({ onSubmit, post }) {
           <span className="error-message">{errors.post.message}</span>
         )}
         <button>Post</button>
-        {errors.root && (
-          <span className="error-message">{errors.root.message}</span>
+        {rootErrors?.root && (
+          <span className="error-message">{rootErrors?.root.message}</span>
         )}
       </form>
     </div>

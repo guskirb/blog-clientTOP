@@ -1,7 +1,8 @@
 import PostForm from "../../components/post_form/post_form";
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { editPost } from "../../api/posts";
 
 const schema = z.object({
@@ -13,6 +14,12 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 export default function EditPost() {
+  const {
+    setError,
+    formState: { errors },
+  } = useForm<FormFields>({
+    resolver: zodResolver(schema),
+  });
   const location = useLocation();
   const { post } = location.state;
   const { postId } = useParams();
@@ -35,5 +42,5 @@ export default function EditPost() {
     }
   };
 
-  return <PostForm onSubmit={onSubmit} post={post} />;
+  return <PostForm onSubmit={onSubmit} post={post} rootErrors={errors} />;
 }

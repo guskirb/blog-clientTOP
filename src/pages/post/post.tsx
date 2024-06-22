@@ -1,18 +1,25 @@
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, Navigate, Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import unescape from "validator/lib/unescape";
 import { getPost } from "../../api/posts";
 import parse from "html-react-parser";
+import { deletePost } from "../../api/posts";
 import "./post.css";
 
 import Spinner from "../../components/spinner/spinner";
 
 export default function Post() {
   const { postId } = useParams();
+  const navigate = useNavigate();
   const { data: post, isLoading } = useQuery({
     queryKey: ["post", parseInt(postId!)],
     queryFn: () => getPost(postId!),
   });
+
+  function onDelete() {
+    deletePost(postId as string);
+    navigate("/", { replace: true });
+  }
 
   if (isLoading) {
     return <Spinner />;
@@ -23,6 +30,7 @@ export default function Post() {
       <Link to={`/edit-post/${postId}`} state={{ post: post }}>
         <button>Edit</button>
       </Link>
+      <button onClick={onDelete}>Delete</button>
       <div
         className="image"
         style={{

@@ -32,3 +32,10 @@ export function editPost(data: Data, postId: string) {
     .then((response) => response.data)
     .catch((error) => error.response);
 }
+
+export function deletePost(postId: string){
+  return axios
+  .post(`/posts/${postId}/delete`)
+  .then((response) => response.data)
+  .catch((error) => error.response);
+}
