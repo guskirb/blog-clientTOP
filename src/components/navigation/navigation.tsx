@@ -29,15 +29,14 @@ export default function Navigation() {
           <Link to="/new-post">
             <button>New Post</button>
           </Link>
-          <button className="pill-button" onClick={onLogout}>Log Out</button>
+          <button className="pill-button" onClick={onLogout}>
+            LOG OUT
+          </button>
         </div>
       ) : (
         <div className="auth-buttons">
           <Link to="/login">
             <button className="pill-button">LOG IN</button>
-          </Link>
-          <Link to="/signup">
-            <button className="pill-button">SIGN UP</button>
           </Link>
         </div>
       )}

@@ -92,7 +92,7 @@
 
 .post_container {
   box-sizing: border-box;
-  border: 1px solid #afafaf;
+  background-color: white;
   border-radius: 5px;
 }
 

@@ -48,9 +48,7 @@ export default function SignUp() {
       if (response.status === 400) {
         throw new Error();
       } else {
-        AuthUser.setLocalStorage(response);
-        setAuth(response);
-        navigate("/", { replace: true });
+        navigate("/login", { replace: true });
       }
     } catch (err) {
       setError("root", {
@@ -65,7 +63,12 @@ export default function SignUp() {
 
   return (
     <div className="form__container">
-      <form action="" method="POST" onSubmit={handleSubmit(onSubmit)} className="auth_form">
+      <form
+        action=""
+        method="POST"
+        onSubmit={handleSubmit(onSubmit)}
+        className="auth_form"
+      >
         <h2>Sign Up</h2>
         <label htmlFor="username">Username:</label>
         <input
