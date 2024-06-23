@@ -17,3 +17,10 @@ export function getComment(postId: string) {
     .then((response) => response.data)
     .catch((error) => error.response);
 }
+
+export function deleteComment(postId: string, commentId: string) {
+  return axios
+    .post(`/posts/${postId}/comments/${commentId}/delete`)
+    .then((response) => response.data)
+    .catch((error) => error.response);
+}

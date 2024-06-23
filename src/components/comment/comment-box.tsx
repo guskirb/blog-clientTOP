@@ -11,11 +11,12 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>;
 
-export default function CommentBox({ postId }) {
+export default function CommentBox({ postId, refetch, isLoading }) {
   const {
     register,
     handleSubmit,
     setError,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     resolver: zodResolver(schema),
@@ -29,7 +30,8 @@ export default function CommentBox({ postId }) {
           message: "There was an error making a comment",
         });
       }
-      console.log(response);
+      reset();
+      refetch();
     } catch (err) {
       setError("root", {
         message: "There was an error making a comment",
@@ -37,7 +39,7 @@ export default function CommentBox({ postId }) {
     }
   };
 
-  if (isSubmitting) {
+  if (isSubmitting || isLoading) {
     return (
       <div className="comment-form__container">
         <Spinner />

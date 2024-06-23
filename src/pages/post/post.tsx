@@ -18,8 +18,12 @@ export default function Post() {
     queryKey: ["post", parseInt(postId!)],
     queryFn: () => getPost(postId!),
   });
-  const { data: comments, isLoading: commentLoading } = useQuery({
-    queryKey: ["comment", parseInt(postId!)],
+  const {
+    data: comments,
+    isLoading: commentLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["comment"],
     queryFn: () => getComment(postId!),
   });
 
@@ -28,7 +32,7 @@ export default function Post() {
     navigate("/", { replace: true });
   }
 
-  if (commentLoading || postLoading) {
+  if (postLoading) {
     return <Spinner />;
   }
 
@@ -51,11 +55,19 @@ export default function Post() {
       ></div>
       {parse(unescape(post.post))}
       <div className="comment__title">
-        <h2 className="comment-header">{comments.comments.length} Comments</h2>
+        <h2 className="comment-header">{comments?.comments.length} Comments</h2>
         <div className="comment-line"></div>
       </div>
-      <CommentBox postId={postId} />
-      <CommentList comments={comments.comments} />
+      <CommentBox
+        postId={postId}
+        refetch={refetch}
+        isLoading={commentLoading}
+      />
+      <CommentList
+        postId={postId}
+        comments={comments?.comments}
+        refetch={refetch}
+      />
     </div>
   ) : (
     <Navigate to={"/"} />
