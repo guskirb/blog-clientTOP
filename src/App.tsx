@@ -9,6 +9,7 @@ import RequireAuth from "./components/auth/require.auth";
 import PersistLogin from "./components/auth/persist.login";
 import NewPost from "./pages/new-post/new-post";
 import EditPost from "./pages/edit-post/edit-post";
+import ScrollToTop from "./components/scroll";
 
 function App() {
   const router = createBrowserRouter([
@@ -16,7 +17,12 @@ function App() {
       element: <PersistLogin />,
       children: [
         {
-          element: <Layout />,
+          element: (
+            <>
+              <ScrollToTop />
+              <Layout />
+            </>
+          ),
           children: [
             {
               path: "/",
