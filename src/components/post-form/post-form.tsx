@@ -4,7 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import unescape from "validator/lib/unescape";
 import Spinner from "../spinner/spinner";
-import "./post_form.css";
+import "./post-form.css";
 
 const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),

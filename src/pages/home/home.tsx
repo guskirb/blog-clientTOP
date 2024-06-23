@@ -12,7 +12,7 @@ export default function Home() {
   });
 
   const listPosts = posts?.map((post) => (
-    <Link to={`/post/${post._id}`} key={post._id}>
+    <Link to={`/post/${post._id}`} key={post._id} state={{ posts: posts }}>
       <div className="post_container">
         <div
           className="post_image"
@@ -47,6 +47,7 @@ export default function Home() {
             style={{
               backgroundImage: `url(${unescape(posts[0].image_url)})`,
             }}
+            state={{ posts: posts }}
           >
             <h2 className="post__title">{unescape(posts[0].title)}</h2>
           </Link>
@@ -57,6 +58,7 @@ export default function Home() {
             style={{
               backgroundImage: `url(${unescape(posts[1].image_url)})`,
             }}
+            state={{ posts: posts }}
           >
             <h3 className="post__title">{unescape(posts[1].title)}</h3>
           </Link>
@@ -67,6 +69,7 @@ export default function Home() {
             style={{
               backgroundImage: `url(${unescape(posts[2].image_url)})`,
             }}
+            state={{ posts: posts }}
           >
             <h3 className="post__title">{unescape(posts[2].title)}</h3>
           </Link>
@@ -80,6 +83,7 @@ export default function Home() {
             style={{
               backgroundImage: `url(${unescape(posts[0].image_url)})`,
             }}
+            state={{ posts: posts }}
           >
             <h2 className="post__title">{unescape(posts[0].title)}</h2>
           </Link>

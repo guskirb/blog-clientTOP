@@ -1,4 +1,10 @@
-import { useParams, Navigate, Link, useNavigate } from "react-router-dom";
+import {
+  useParams,
+  Navigate,
+  Link,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import unescape from "validator/lib/unescape";
 import { getPost } from "../../api/posts";
@@ -10,8 +16,11 @@ import "./post.css";
 import Spinner from "../../components/spinner/spinner";
 import CommentBox from "../../components/comment/comment-box";
 import CommentList from "../../components/comment/comment-list";
+import RecentPosts from "../../components/recent-posts/recent-posts";
 
 export default function Post() {
+  const location = useLocation();
+  const { posts } = location.state;
   const { postId } = useParams();
   const navigate = useNavigate();
   const { data: post, isLoading: postLoading } = useQuery({
@@ -26,7 +35,7 @@ export default function Post() {
     queryKey: ["comment"],
     queryFn: () => getComment(postId!),
   });
-
+  console.log(posts);
   function onDelete() {
     deletePost(postId as string);
     navigate("/", { replace: true });
@@ -58,6 +67,11 @@ export default function Post() {
         }}
       ></div>
       {parse(unescape(post.post))}
+      <div className="comment__title">
+        <h2 className="comment-header">Recent Posts</h2>
+        <div className="comment-line"></div>
+      </div>
+      <RecentPosts posts={posts} postId={postId} />
       <div className="comment__title">
         <h2 className="comment-header">{comments?.comments.length} Comments</h2>
         <div className="comment-line"></div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { newPost } from "../../api/posts";
-import PostForm from "../../components/post_form/post_form";
+import PostForm from "../../components/post-form/post-form";
 
 const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),

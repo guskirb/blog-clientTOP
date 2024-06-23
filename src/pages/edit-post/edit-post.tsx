@@ -1,4 +1,4 @@
-import PostForm from "../../components/post_form/post_form";
+import PostForm from "../../components/post-form/post-form";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
