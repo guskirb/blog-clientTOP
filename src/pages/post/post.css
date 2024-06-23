@@ -34,6 +34,34 @@ h3 {
   margin: 0;
 }
 
+.title-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-button {
+  background: url("../../assets/edit.svg") no-repeat center center/cover;
+  background-size: contain;
+  content: "";
+  height: 20px;
+  width: 20px;
+}
+
+.delete-button {
+  background: url("../../assets/delete.svg") no-repeat center center/cover;
+  background-size: contain;
+  content: "";
+  height: 20px;
+  width: 20px;
+}
+
+.title-buttons {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 950px) {
   .post {
     width: 90%;

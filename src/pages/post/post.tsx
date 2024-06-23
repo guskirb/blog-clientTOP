@@ -38,12 +38,16 @@ export default function Post() {
 
   return post.status !== 400 ? (
     <div className="post">
-      <Link to={`/edit-post/${postId}`} state={{ post: post }}>
-        <button>Edit</button>
-      </Link>
-      <button onClick={onDelete}>Delete</button>
       <div className="title">
-        <p>{post.date_formatted}</p>
+        <div className="title-header">
+          <p>{post.date_formatted}</p>
+          <div className="title-buttons">
+            <Link to={`/edit-post/${postId}`} state={{ post: post }}>
+              <div className="edit-button"></div>
+            </Link>
+            <div onClick={onDelete} className="delete-button"></div>
+          </div>
+        </div>
         <h2>{unescape(post.title)}</h2>
         <h3>{post.author.username.toUpperCase()}</h3>
       </div>
