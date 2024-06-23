@@ -1,0 +1,25 @@
+.recent-posts__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.recent-post {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.recent-post__image {
+    height: 160px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px 5px 0 0;
+}
+
+@media only screen and (max-width: 750px) {
+    .recent-posts__container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+  }
