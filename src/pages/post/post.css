@@ -13,11 +13,18 @@ h3 {
 }
 
 .image {
-  width: 100%;
-  height: 50vh;
+  width: 120%;
+  align-self: center;
+  height: 60vh;
   background-size: cover;
   background-position: center;
   border-radius: 5px;
+  margin-block: 10px;
+}
+
+.path {
+  display: flex;
+  gap: 5px;
 }
 
 .sub_header {
@@ -27,10 +34,23 @@ h3 {
 
 .title {
   width: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
 }
 
 .title > p {
   margin: 0;
+}
+
+.post-author {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.post-author > h3 {
+  font-size: 1.1em;
 }
 
 .category-date {
@@ -55,12 +75,17 @@ h3 {
   justify-content: space-between;
 }
 
+.post-title {
+  font-weight: 500;
+  font-size: 2.5em;
+}
+
 .edit-button {
   background: url("../../assets/edit.svg") no-repeat center center/cover;
   background-size: contain;
   content: "";
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   cursor: pointer;
 }
 
@@ -68,8 +93,8 @@ h3 {
   background: url("../../assets/delete.svg") no-repeat center center/cover;
   background-size: contain;
   content: "";
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   cursor: pointer;
 }
 

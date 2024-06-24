@@ -15,7 +15,11 @@ import RecentPosts from "../../components/recent-posts/recent-posts";
 export default function Post() {
   const { postId } = useParams();
   const navigate = useNavigate();
-  const { data: post, isLoading: postLoading } = useQuery({
+  const {
+    data: post,
+    isLoading,
+    isFetching,
+  } = useQuery({
     queryKey: ["post", parseInt(postId!)],
     queryFn: () => getPost(postId!),
   });
@@ -33,12 +37,18 @@ export default function Post() {
     navigate("/", { replace: true });
   }
 
-  if (postLoading) {
+  if (isLoading || isFetching) {
     return <Spinner />;
   }
 
   return post.status !== 400 ? (
     <div className="post">
+      <div className="path">
+        <Link to={"/"}>Home</Link>
+        &gt;
+        <Link to={"/categories"}>Categories</Link>
+        &gt; {post.category}
+      </div>
       <div className="title">
         <div className="title-header">
           <div className="category-date">
@@ -52,8 +62,11 @@ export default function Post() {
             <div onClick={onDelete} className="delete-button"></div>
           </div>
         </div>
-        <h2>{unescape(post.title)}</h2>
-        <h3>{post.author.username.toUpperCase()}</h3>
+        <h1 className="post-title">{unescape(post.title)}</h1>
+        <div className="post-author">
+          <p> Author:</p>
+          <h3>{post.author.username.toUpperCase()}</h3>
+        </div>
       </div>
       <div
         className="image"

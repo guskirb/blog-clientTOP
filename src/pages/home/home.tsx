@@ -12,7 +12,7 @@ export default function Home() {
   });
 
   const listPosts = posts?.map((post) => (
-    <Link to={`/post/${post._id}`} key={post._id} state={{ posts: posts }}>
+    <Link to={`/post/${post._id}`} key={post._id}>
       <div className="post_container">
         <div
           className="post_image"
@@ -35,8 +35,8 @@ export default function Home() {
     return <Spinner />;
   }
 
-  if (!posts) {
-    return <div>There are no posts</div>;
+  if (posts.length === 0) {
+    return <div>Theres nothing here.</div>;
   }
 
   return (
@@ -50,10 +50,11 @@ export default function Home() {
             style={{
               backgroundImage: `url(${unescape(posts[0].image_url)})`,
             }}
-            state={{ posts: posts }}
           >
             <div className="post__title">
-              <div className="post-category grid-category">{posts[0].category}</div>
+              <div className="post-category grid-category">
+                {posts[0].category}
+              </div>
               <h2>{unescape(posts[0].title)}</h2>
             </div>
           </Link>
@@ -64,10 +65,11 @@ export default function Home() {
             style={{
               backgroundImage: `url(${unescape(posts[1].image_url)})`,
             }}
-            state={{ posts: posts }}
           >
             <div className="post__title">
-              <div className="post-category grid-category">{posts[1].category}</div>
+              <div className="post-category grid-category">
+                {posts[1].category}
+              </div>
               <h2>{unescape(posts[1].title)}</h2>
             </div>
           </Link>
@@ -78,10 +80,11 @@ export default function Home() {
             style={{
               backgroundImage: `url(${unescape(posts[2].image_url)})`,
             }}
-            state={{ posts: posts }}
           >
             <div className="post__title">
-              <div className="post-category grid-category">{posts[2].category}</div>
+              <div className="post-category grid-category">
+                {posts[2].category}
+              </div>
               <h2>{unescape(posts[2].title)}</h2>
             </div>
           </Link>
@@ -95,7 +98,6 @@ export default function Home() {
             style={{
               backgroundImage: `url(${unescape(posts[0].image_url)})`,
             }}
-            state={{ posts: posts }}
           >
             <div className="post__title">
               <div>{posts[0].category}</div>
