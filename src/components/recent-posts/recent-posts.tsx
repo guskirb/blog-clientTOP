@@ -32,7 +32,13 @@ export default function RecentPosts({ postId }) {
               backgroundImage: `url(${unescape(post.image_url)})`,
             }}
           ></div>
-          <div className="recent-title">{post.title}</div>
+          <div className="post_header">
+          <h4>{unescape(post.title)}</h4>
+          <div className="post_lower">
+            <div className="post-category">{post.category}</div>
+            <p>{post.date_formatted}</p>
+          </div>
+        </div>
         </Link>
       </div>
     ));

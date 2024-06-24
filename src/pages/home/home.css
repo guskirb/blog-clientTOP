@@ -83,6 +83,10 @@
   width: 100%;
 }
 
+.recent__view-all {
+  white-space: nowrap;
+}
+
 .posts_grid_container {
   width: 100%;
   display: grid;

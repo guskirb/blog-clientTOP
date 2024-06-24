@@ -109,6 +109,9 @@ export default function Home() {
       <div className="recent__title">
         <h2 className="recent-header">Recent Posts</h2>
         <div className="recent-line"></div>
+        <Link to={"/all"}>
+          <p className="recent__view-all">View All</p>
+        </Link>
       </div>
       <div className="posts_grid_container">{listPosts}</div>
     </div>

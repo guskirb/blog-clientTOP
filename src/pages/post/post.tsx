@@ -78,6 +78,9 @@ export default function Post() {
       <div className="comment__title">
         <h2 className="comment-header">Recent Posts</h2>
         <div className="comment-line"></div>
+        <Link to={"/all"}>
+          <p className="recent__view-all">View All</p>
+        </Link>
       </div>
       <RecentPosts postId={postId} />
       <div className="comment__title">
