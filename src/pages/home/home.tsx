@@ -21,8 +21,11 @@ export default function Home() {
           }}
         ></div>
         <div className="post_header">
-          <h2>{unescape(post.title)}</h2>
-          <p>{post.date_formatted}</p>
+          <h4>{unescape(post.title)}</h4>
+          <div className="post_lower">
+            <div className="post-category">{post.category}</div>
+            <p>{post.date_formatted}</p>
+          </div>
         </div>
       </div>
     </Link>
@@ -49,7 +52,10 @@ export default function Home() {
             }}
             state={{ posts: posts }}
           >
-            <h2 className="post__title">{unescape(posts[0].title)}</h2>
+            <div className="post__title">
+              <div className="post-category grid-category">{posts[0].category}</div>
+              <h2>{unescape(posts[0].title)}</h2>
+            </div>
           </Link>
           <Link
             to={`/post/${posts[1]._id}`}
@@ -60,7 +66,10 @@ export default function Home() {
             }}
             state={{ posts: posts }}
           >
-            <h3 className="post__title">{unescape(posts[1].title)}</h3>
+            <div className="post__title">
+              <div className="post-category grid-category">{posts[1].category}</div>
+              <h2>{unescape(posts[1].title)}</h2>
+            </div>
           </Link>
           <Link
             to={`/post/${posts[2]._id}`}
@@ -71,7 +80,10 @@ export default function Home() {
             }}
             state={{ posts: posts }}
           >
-            <h3 className="post__title">{unescape(posts[2].title)}</h3>
+            <div className="post__title">
+              <div className="post-category grid-category">{posts[2].category}</div>
+              <h2>{unescape(posts[2].title)}</h2>
+            </div>
           </Link>
         </div>
       ) : (
@@ -79,13 +91,16 @@ export default function Home() {
           <Link
             to={`/post/${posts[0]._id}`}
             key={posts[0]._id}
-            classNam="main-post1"
+            className="main-post1"
             style={{
               backgroundImage: `url(${unescape(posts[0].image_url)})`,
             }}
             state={{ posts: posts }}
           >
-            <h2 className="post__title">{unescape(posts[0].title)}</h2>
+            <div className="post__title">
+              <div>{posts[0].category}</div>
+              <h2>{unescape(posts[0].title)}</h2>
+            </div>
           </Link>
         </div>
       )}

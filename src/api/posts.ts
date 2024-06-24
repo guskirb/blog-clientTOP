@@ -19,6 +19,13 @@ export function getPost(postId: string) {
     .catch((error) => error.response);
 }
 
+export function getRecentPosts() {
+  return axios
+    .get("/posts/recent")
+    .then((response) => response.data.posts)
+    .catch((error) => error.response);
+}
+
 export function newPost(data: Data) {
   return axios
     .post("/posts", data)
@@ -33,9 +40,9 @@ export function editPost(data: Data, postId: string) {
     .catch((error) => error.response);
 }
 
-export function deletePost(postId: string){
+export function deletePost(postId: string) {
   return axios
-  .post(`/posts/${postId}/delete`)
-  .then((response) => response.data)
-  .catch((error) => error.response);
+    .post(`/posts/${postId}/delete`)
+    .then((response) => response.data)
+    .catch((error) => error.response);
 }

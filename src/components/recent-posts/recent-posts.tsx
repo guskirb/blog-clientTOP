@@ -1,8 +1,25 @@
 import unescape from "validator/lib/unescape";
 import { Link } from "react-router-dom";
+import { getRecentPosts } from "../../api/posts";
+import { useQuery } from "@tanstack/react-query";
 import "./recent-posts.css";
 
-export default function RecentPosts({ posts, postId }) {
+import Spinner from "../spinner/spinner";
+
+export default function RecentPosts({ postId }) {
+  const { data: posts, isLoading } = useQuery({
+    queryKey: ["recent"],
+    queryFn: () => getRecentPosts(),
+  });
+
+  if (isLoading) {
+    return (
+      <div className="comment-form__container">
+        <Spinner />
+      </div>
+    );
+  }
+
   const listPosts = posts
     ?.filter((post: object) => post._id !== postId)
     .slice(0, 3)
@@ -15,7 +32,7 @@ export default function RecentPosts({ posts, postId }) {
               backgroundImage: `url(${unescape(post.image_url)})`,
             }}
           ></div>
-          {post.title}
+          <div className="recent-title">{post.title}</div>
         </Link>
       </div>
     ));

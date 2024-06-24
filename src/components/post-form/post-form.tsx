@@ -11,6 +11,7 @@ const schema = z.object({
   image_url: z.string().min(1, { message: "Image is required" }),
   post: z.string().min(1, { message: "Post is required" }),
   public: z.boolean(),
+  category: z.string().min(1, { message: "Category is required" }),
 });
 
 type FormFields = z.infer<typeof schema>;
@@ -48,6 +49,18 @@ export default function PostForm({ onSubmit, post, rootErrors }) {
         />
         {errors.title && (
           <span className="error-message">{errors.title.message}</span>
+        )}
+        <label htmlFor="category">Category:</label>
+        <input
+          {...register("category")}
+          className="new-post__input"
+          type="text"
+          name="category"
+          id="category"
+          defaultValue={post ? unescape(post.category) : ""}
+        />
+        {errors.category && (
+          <span className="error-message">{errors.category.message}</span>
         )}
         <label htmlFor="image_url">Image URL:</label>
         <input

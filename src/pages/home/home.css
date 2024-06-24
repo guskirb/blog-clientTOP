@@ -61,8 +61,8 @@
   color: white;
   align-self: flex-end;
   margin: 0;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.336);
+  padding: 1em;
+  background-color: #00000070;
   width: 100%;
   border-radius: 0 0 5px 5px;
 }
@@ -107,6 +107,31 @@
 
 .post_header {
   padding: 1em;
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+}
+
+.post_lower {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post__title {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+}
+
+.post__title > h2 {
+  font-size: 1.1em;
+  font-weight: 400;
+}
+
+.grid-category {
+  border: white solid 1px !important;
+  color: white !important;
 }
 
 @media only screen and (max-width: 1200px) {

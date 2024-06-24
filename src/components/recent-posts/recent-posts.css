@@ -11,10 +11,15 @@
 }
 
 .recent-post__image {
-    height: 160px;
+    height: 150px;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 5px 5px 0 0;
+}
+
+.recent-title {
+    padding: 10px;
+    font-size: 0.9em;
 }
 
 @media only screen and (max-width: 750px) {
