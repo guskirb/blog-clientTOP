@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home/home";
 import Post from "./pages/post/post";
+import AllPosts from "./pages/all-posts/all-posts";
 import LogIn from "./pages/auth/login";
 import SignUp from "./pages/auth/signup";
 import Layout from "./components/layout/layout";
@@ -27,6 +28,10 @@ function App() {
             {
               path: "/",
               element: <Home />,
+            },
+            {
+              path: "/all",
+              element: <AllPosts />,
             },
             {
               path: "/post/:postId",

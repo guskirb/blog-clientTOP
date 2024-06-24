@@ -1,0 +1,9 @@
+.all-posts__container {
+  width: 1200px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .all-posts__container {
+    width: 90%;
+  }
+}
