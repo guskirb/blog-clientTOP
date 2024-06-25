@@ -5,6 +5,7 @@ import { getPost } from "../../api/posts";
 import { getComment } from "../../api/comments";
 import parse from "html-react-parser";
 import { deletePost } from "../../api/posts";
+import useAuth from "../../hooks/useAuth";
 import "./post.css";
 
 import Spinner from "../../components/spinner/spinner";
@@ -15,6 +16,7 @@ import RecentPosts from "../../components/recent-posts/recent-posts";
 export default function Post() {
   const { postId } = useParams();
   const navigate = useNavigate();
+  const { auth }: any = useAuth();
   const { data: post, isLoading } = useQuery({
     queryKey: ["post", postId!],
     queryFn: () => getPost(postId!),
@@ -41,9 +43,8 @@ export default function Post() {
     <div className="post">
       <div className="path">
         <Link to={"/"}>Home</Link>
-        &gt;
-        Categories
-        &gt; <Link to={`/category/${post.category}`}>{post.category}</Link>
+        &gt; Categories &gt;{" "}
+        <Link to={`/category/${post.category}`}>{post.category}</Link>
       </div>
       <div className="title">
         <div className="title-header">
@@ -53,12 +54,14 @@ export default function Post() {
             </Link>
             <p>{post.date_formatted}</p>
           </div>
-          <div className="title-buttons">
-            <Link to={`/edit-post/${postId}`} state={{ post: post }}>
-              <div className="edit-button"></div>
-            </Link>
-            <div onClick={onDelete} className="delete-button"></div>
-          </div>
+          {(post.author._id === auth.user?._id || auth.user?.admin) && (
+            <div className="title-buttons">
+              <Link to={`/edit-post/${postId}`} state={{ post: post }}>
+                <div className="edit-button"></div>
+              </Link>
+              <div onClick={onDelete} className="delete-button"></div>
+            </div>
+          )}
         </div>
         <h1 className="post-title">{unescape(post.title)}</h1>
         <div className="post-author">

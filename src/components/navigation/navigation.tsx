@@ -1,18 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import AuthUser from "../../api/auth";
+import { getUser } from "../../api/users";
 import "./navigation.css";
 
 export default function Navigation() {
   const { auth, setAuth }: any = useAuth();
   const navigate = useNavigate();
 
-  function onLogout() {
+  async function onLogout() {
     AuthUser.logOut();
-    setAuth("");
+    const response = await getUser();
+    setAuth(response);
     navigate("/", { replace: true });
   }
-
+  
   return (
     <div className="nav__container">
       <div>

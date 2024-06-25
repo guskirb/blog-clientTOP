@@ -17,7 +17,7 @@ export default function CommentList({ postId, comments, refetch }) {
         <p style={{ whiteSpace: "pre-wrap" }}>{comment.comment}</p>
         <p>{DateTime.fromISO(comment.date).toRelative()}</p>
       </div>
-      {(comment.author._id === auth.user._id || auth.user.admin) && (
+      {(comment.author._id === auth.user?._id || auth.user?.admin) && (
         <div
           className="delete-button"
           onClick={() => onDelete(postId, comment._id)}
