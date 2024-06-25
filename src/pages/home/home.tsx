@@ -12,7 +12,7 @@ export default function Home() {
   });
 
   const listPosts = posts?.map((post) => (
-    <Link to={`/post/${post._id}`} key={post._id}>
+    <Link to={`/post/${post._id}`} key={post._id} className="animation__container">
       <div className="post_container">
         <div
           className="post_image"
@@ -49,51 +49,64 @@ export default function Home() {
             to={`/post/${posts[0]._id}`}
             key={posts[0]._id}
             className="grid__item1 grid__item"
-            style={{
-              backgroundImage: `url(${unescape(posts[0].image_url)})`,
-            }}
           >
-            <div className="post__title">
-              <Link to={`/category/${posts[0].category}`}>
-                <div className="post-category grid-category">
-                  {posts[0].category}
-                </div>
-              </Link>
-              <h2>{unescape(posts[0].title)}</h2>
+            <div
+              className="post__wrapper"
+              style={{
+                backgroundImage: `url(${unescape(posts[0].image_url)})`,
+              }}
+            >
+              <div className="post__title">
+                <Link to={`/category/${posts[0].category}`}>
+                  <div className="post-category grid-category">
+                    {posts[0].category}
+                  </div>
+                </Link>
+                <h2>{unescape(posts[0].title)}</h2>
+              </div>
             </div>
           </Link>
           <Link
             to={`/post/${posts[1]._id}`}
             key={posts[1]._id}
             className="grid__item2 grid__item"
-            style={{
-              backgroundImage: `url(${unescape(posts[1].image_url)})`,
-            }}
           >
-            <div className="post__title">
-              <Link to={`/category/${posts[1].category}`}>
-                <div className="post-category grid-category">
-                  {posts[1].category}
-                </div>
-              </Link>
-              <h2>{unescape(posts[1].title)}</h2>
+            <div
+              className="post__wrapper"
+              style={{
+                backgroundImage: `url(${unescape(posts[1].image_url)})`,
+              }}
+            >
+              <div className="post__title">
+                <Link to={`/category/${posts[1].category}`}>
+                  <div className="post-category grid-category">
+                    {posts[1].category}
+                  </div>
+                </Link>
+                <h2>{unescape(posts[1].title)}</h2>
+              </div>
             </div>
           </Link>
+          <div></div>
           <Link
             to={`/post/${posts[2]._id}`}
             key={posts[2]._id}
             className="grid__item3 grid__item"
-            style={{
-              backgroundImage: `url(${unescape(posts[2].image_url)})`,
-            }}
           >
-            <div className="post__title">
-              <Link to={`/category/${posts[2].category}`}>
-                <div className="post-category grid-category">
-                  {posts[2].category}
-                </div>
-              </Link>
-              <h2>{unescape(posts[2].title)}</h2>
+            <div
+              className="post__wrapper"
+              style={{
+                backgroundImage: `url(${unescape(posts[2].image_url)})`,
+              }}
+            >
+              <div className="post__title">
+                <Link to={`/category/${posts[2].category}`}>
+                  <div className="post-category grid-category">
+                    {posts[2].category}
+                  </div>
+                </Link>
+                <h2>{unescape(posts[2].title)}</h2>
+              </div>
             </div>
           </Link>
         </div>

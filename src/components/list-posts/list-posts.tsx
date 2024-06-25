@@ -4,7 +4,7 @@ import "./list-post.css";
 
 export default function ListPosts({ posts, title }) {
   const listPosts = posts?.map((post) => (
-    <Link to={`/post/${post._id}`} key={post._id}>
+    <Link to={`/post/${post._id}`} key={post._id} class="animation__container">
       <div className="post_container">
         <div
           className="post_image"
