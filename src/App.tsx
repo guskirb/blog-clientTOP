@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/home/home";
 import Post from "./pages/post/post";
 import AllPosts from "./pages/posts-list/all-posts";
+import PostByCategory from "./pages/posts-list/post-by-category";
 import LogIn from "./pages/auth/login";
 import SignUp from "./pages/auth/signup";
 import Layout from "./components/layout/layout";
@@ -32,6 +33,10 @@ function App() {
             {
               path: "/all",
               element: <AllPosts />,
+            },
+            {
+              path: "/category/:category",
+              element: <PostByCategory />,
             },
             {
               path: "/post/:postId",

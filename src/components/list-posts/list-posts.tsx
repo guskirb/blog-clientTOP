@@ -23,7 +23,7 @@ export default function ListPosts({ posts }) {
     </Link>
   ));
 
-  if (posts.length === 0) {
+  if (posts?.length === 0) {
     return <div>Theres nothing here.</div>;
   }
 

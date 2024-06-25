@@ -46,3 +46,10 @@ export function deletePost(postId: string) {
     .then((response) => response.data)
     .catch((error) => error.response);
 }
+
+export function getByCategory(category: string) {
+  return axios
+    .get(`/posts/category/${category}`)
+    .then((response) => response.data.posts)
+    .catch((error) => error.response);
+}
