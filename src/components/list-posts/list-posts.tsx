@@ -1,17 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { getPosts } from "../../api/posts";
 import { Link } from "react-router-dom";
 import { unescape } from "validator";
-import "./all-posts.css"
+import "./list-post.css"
 
-import Spinner from "../../components/spinner/spinner";
-
-export default function AllPosts() {
-  const { data: posts, isLoading } = useQuery({
-    queryKey: ["posts"],
-    queryFn: getPosts,
-  });
-
+export default function ListPosts({ posts }) {
   const listPosts = posts?.map((post) => (
     <Link to={`/post/${post._id}`} key={post._id}>
       <div className="post_container">
@@ -31,10 +22,6 @@ export default function AllPosts() {
       </div>
     </Link>
   ));
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   if (posts.length === 0) {
     return <div>Theres nothing here.</div>;
