@@ -8,11 +8,9 @@ import Spinner from "../../components/spinner/spinner";
 export default function PostByCategory() {
   const { category } = useParams();
   const { data: posts, isLoading } = useQuery({
-    queryKey: ["posts"],
+    queryKey: ["posts", category],
     queryFn: () => getByCategory(category),
   });
-
-  console.log(posts);
 
   if (isLoading) {
     return <Spinner />;

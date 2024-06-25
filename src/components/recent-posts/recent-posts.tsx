@@ -25,7 +25,7 @@ export default function RecentPosts({ postId }) {
     .slice(0, 3)
     .map((post) => (
       <div className="recent-post" key={post._id}>
-        <Link to={`/post/${post._id}`} reloadDocument>
+        <Link to={`/post/${post._id}`}>
           <div
             className="recent-post__image"
             style={{

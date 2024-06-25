@@ -15,12 +15,8 @@ import RecentPosts from "../../components/recent-posts/recent-posts";
 export default function Post() {
   const { postId } = useParams();
   const navigate = useNavigate();
-  const {
-    data: post,
-    isLoading,
-    isFetching,
-  } = useQuery({
-    queryKey: ["post", parseInt(postId!)],
+  const { data: post, isLoading } = useQuery({
+    queryKey: ["post", postId!],
     queryFn: () => getPost(postId!),
   });
   const {
@@ -28,7 +24,7 @@ export default function Post() {
     isLoading: commentLoading,
     refetch,
   } = useQuery({
-    queryKey: ["comment"],
+    queryKey: ["comment", postId!],
     queryFn: () => getComment(postId!),
   });
 
@@ -37,7 +33,7 @@ export default function Post() {
     navigate("/", { replace: true });
   }
 
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return <Spinner />;
   }
 
