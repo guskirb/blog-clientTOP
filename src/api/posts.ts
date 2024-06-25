@@ -12,6 +12,13 @@ export function getPosts() {
     .catch((error) => error.response);
 }
 
+export function getDrafts() {
+  return axios
+    .get("/posts/private")
+    .then((response) => response.data.posts)
+    .catch((error) => error.response);
+}
+
 export function getPost(postId: string) {
   return axios
     .get(`/posts/${postId}`)

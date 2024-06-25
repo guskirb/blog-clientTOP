@@ -11,6 +11,7 @@ import RequireAuth from "./components/auth/require.auth";
 import PersistLogin from "./components/auth/persist.login";
 import NewPost from "./pages/new-post/new-post";
 import EditPost from "./pages/edit-post/edit-post";
+import AllDrafts from "./pages/all-posts/all-drafts";
 import ScrollToTop from "./components/scroll";
 
 function App() {
@@ -60,6 +61,10 @@ function App() {
                 {
                   path: "/edit-post/:postId",
                   element: <EditPost />,
+                },
+                {
+                  path: "/drafts",
+                  element: <AllDrafts />,
                 },
               ],
             },
