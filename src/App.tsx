@@ -8,6 +8,7 @@ import LogIn from "./pages/auth/login";
 import SignUp from "./pages/auth/signup";
 import Layout from "./components/layout/layout";
 import RequireAuth from "./components/auth/require.auth";
+import Admin from "./components/auth/admin";
 import PersistLogin from "./components/auth/persist.login";
 import NewPost from "./pages/new-post/new-post";
 import EditPost from "./pages/edit-post/edit-post";
@@ -52,7 +53,7 @@ function App() {
               element: <SignUp />,
             },
             {
-              element: <RequireAuth />,
+              element: <Admin />,
               children: [
                 {
                   path: "/new-post",

@@ -50,6 +50,7 @@ export default function Navigation() {
       </div>
       {auth.user ? (
         <div className="auth-buttons">
+          <p>Welcome <b>{auth.user.username.toUpperCase()}</b></p>
           {auth.user?.admin && (
             <div onMouseEnter={showModal} onMouseLeave={hideModal}>
               <div className="settings-button"></div>

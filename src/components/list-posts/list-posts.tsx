@@ -25,14 +25,19 @@ export default function ListPosts({ posts, title }) {
     </Link>
   ));
 
+  if (posts?.length === 0) {
+    return (
+      <div className="all-posts__container">
+        <h2 className="posts__header">{title}</h2>
+        <div>Theres nothing here.</div>
+      </div>
+    );
+  }
+
   return (
     <div className="all-posts__container">
       <h2 className="posts__header">{title}</h2>
-      {posts?.length === 0 ? (
-        <div>Theres nothing here.</div>
-      ) : (
-        <div className="all-posts_grid_container">{listPosts}</div>
-      )}
+      <div className="all-posts_grid_container">{listPosts}</div>
     </div>
   );
 }
