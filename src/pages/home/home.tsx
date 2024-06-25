@@ -23,7 +23,9 @@ export default function Home() {
         <div className="post_header">
           <h4>{unescape(post.title)}</h4>
           <div className="post_lower">
-            <div className="post-category">{post.category}</div>
+            <Link to={`/category/${post.category}`}>
+              <div className="post-category">{post.category}</div>
+            </Link>
             <p>{post.date_formatted}</p>
           </div>
         </div>
@@ -52,9 +54,11 @@ export default function Home() {
             }}
           >
             <div className="post__title">
-              <div className="post-category grid-category">
-                {posts[0].category}
-              </div>
+              <Link to={`/category/${posts[0].category}`}>
+                <div className="post-category grid-category">
+                  {posts[0].category}
+                </div>
+              </Link>
               <h2>{unescape(posts[0].title)}</h2>
             </div>
           </Link>
@@ -67,9 +71,11 @@ export default function Home() {
             }}
           >
             <div className="post__title">
-              <div className="post-category grid-category">
-                {posts[1].category}
-              </div>
+              <Link to={`/category/${posts[1].category}`}>
+                <div className="post-category grid-category">
+                  {posts[1].category}
+                </div>
+              </Link>
               <h2>{unescape(posts[1].title)}</h2>
             </div>
           </Link>
@@ -82,9 +88,11 @@ export default function Home() {
             }}
           >
             <div className="post__title">
-              <div className="post-category grid-category">
-                {posts[2].category}
-              </div>
+              <Link to={`/category/${posts[2].category}`}>
+                <div className="post-category grid-category">
+                  {posts[2].category}
+                </div>
+              </Link>
               <h2>{unescape(posts[2].title)}</h2>
             </div>
           </Link>

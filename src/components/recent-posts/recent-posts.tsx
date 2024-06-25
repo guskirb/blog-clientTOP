@@ -33,12 +33,14 @@ export default function RecentPosts({ postId }) {
             }}
           ></div>
           <div className="post_header">
-          <h4>{unescape(post.title)}</h4>
-          <div className="post_lower">
-            <div className="post-category">{post.category}</div>
-            <p>{post.date_formatted}</p>
+            <h4>{unescape(post.title)}</h4>
+            <div className="post_lower">
+              <Link to={`/category/${post.category}`}>
+                <div className="post-category">{post.category}</div>
+              </Link>
+              <p>{post.date_formatted}</p>
+            </div>
           </div>
-        </div>
         </Link>
       </div>
     ));

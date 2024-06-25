@@ -67,6 +67,11 @@ h3 {
   padding-inline: 0.8em;
   font-size: 0.8em;
   border-radius: 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.post-category:hover {
+  transform: scale(1.05);
 }
 
 .title-header {

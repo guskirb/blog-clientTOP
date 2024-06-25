@@ -15,7 +15,9 @@ export default function ListPosts({ posts }) {
         <div className="post_header">
           <h4>{unescape(post.title)}</h4>
           <div className="post_lower">
+            <Link to={`/category/${post.category}`}>
             <div className="post-category">{post.category}</div>
+            </Link>
             <p>{post.date_formatted}</p>
           </div>
         </div>

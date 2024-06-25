@@ -47,12 +47,14 @@ export default function Post() {
         <Link to={"/"}>Home</Link>
         &gt;
         <Link to={"/categories"}>Categories</Link>
-        &gt; {post.category}
+        &gt; <Link to={`/category/${post.category}`}>{post.category}</Link>
       </div>
       <div className="title">
         <div className="title-header">
           <div className="category-date">
-            <div className="post-category">{post.category}</div>
+            <Link to={`/category/${post.category}`}>
+              <div className="post-category">{post.category}</div>
+            </Link>
             <p>{post.date_formatted}</p>
           </div>
           <div className="title-buttons">
