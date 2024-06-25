@@ -1,5 +1,20 @@
 .all-posts__container {
   width: 1200px;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.all-posts_grid_container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 15px;
+}
+
+.posts__header{
+  font-size: 2em;
+  font-weight: 400;
 }
 
 @media only screen and (max-width: 1200px) {

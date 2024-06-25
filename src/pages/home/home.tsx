@@ -48,7 +48,7 @@ export default function Home() {
           <Link
             to={`/post/${posts[0]._id}`}
             key={posts[0]._id}
-            className="grid__item1"
+            className="grid__item1 grid__item"
             style={{
               backgroundImage: `url(${unescape(posts[0].image_url)})`,
             }}
@@ -65,7 +65,7 @@ export default function Home() {
           <Link
             to={`/post/${posts[1]._id}`}
             key={posts[1]._id}
-            className="grid__item2"
+            className="grid__item2 grid__item"
             style={{
               backgroundImage: `url(${unescape(posts[1].image_url)})`,
             }}
@@ -82,7 +82,7 @@ export default function Home() {
           <Link
             to={`/post/${posts[2]._id}`}
             key={posts[2]._id}
-            className="grid__item3"
+            className="grid__item3 grid__item"
             style={{
               backgroundImage: `url(${unescape(posts[2].image_url)})`,
             }}

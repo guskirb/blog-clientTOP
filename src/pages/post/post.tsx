@@ -42,7 +42,7 @@ export default function Post() {
       <div className="path">
         <Link to={"/"}>Home</Link>
         &gt;
-        <Link to={"/categories"}>Categories</Link>
+        Categories
         &gt; <Link to={`/category/${post.category}`}>{post.category}</Link>
       </div>
       <div className="title">

@@ -21,7 +21,9 @@ export default function Navigation() {
         </Link>
       </div>
       <div>
-        <button>All</button>
+        <Link to="/all">
+          <button>All Posts</button>
+        </Link>
         <button>Tech</button>
       </div>
       {auth.user ? (

@@ -14,5 +14,5 @@ export default function AllPosts() {
     return <Spinner />;
   }
 
-  return <ListPosts posts={posts} />;
+  return <ListPosts posts={posts} title={'All Posts'}/>;
 }
