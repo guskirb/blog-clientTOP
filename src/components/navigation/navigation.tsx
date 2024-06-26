@@ -72,6 +72,16 @@ export default function Navigation() {
               Sport
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/category/tech"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : "" + "nav__link"
+              }
+            >
+              Tech
+            </NavLink>
+          </li>
         </ul>
       </div>
       {auth.user ? (

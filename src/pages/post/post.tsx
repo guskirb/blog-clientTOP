@@ -88,11 +88,13 @@ export default function Post() {
         <h2 className="comment-header">{comments?.comments.length} Comments</h2>
         <div className="comment-line"></div>
       </div>
-      <CommentBox
-        postId={postId}
-        refetch={refetch}
-        isLoading={commentLoading}
-      />
+      {auth.user && (
+        <CommentBox
+          postId={postId}
+          refetch={refetch}
+          isLoading={commentLoading}
+        />
+      )}
       <CommentList
         postId={postId}
         comments={comments?.comments}
