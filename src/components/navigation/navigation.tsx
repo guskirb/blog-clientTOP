@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import AuthUser from "../../api/auth";
@@ -33,8 +33,6 @@ export default function Navigation() {
     );
   }
 
-  console.log(modal);
-
   return (
     <div className="nav__container">
       <div>
@@ -43,14 +41,44 @@ export default function Navigation() {
         </Link>
       </div>
       <div>
-        <Link to="/all">
-          <button>All Posts</button>
-        </Link>
-        <button>Tech</button>
+        <ul className="nav__buttons">
+          <li>
+            <NavLink
+              to="/all"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : "" + "nav__link"
+              }
+            >
+              All Posts
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/category/travel"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : "" + "nav__link"
+              }
+            >
+              Travel
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/category/sport"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : "" + "nav__link"
+              }
+            >
+              Sport
+            </NavLink>
+          </li>
+        </ul>
       </div>
       {auth.user ? (
         <div className="auth-buttons">
-          <p>Welcome <b>{auth.user?.username.toUpperCase()}</b></p>
+          <p>
+            Welcome <b>{auth.user?.username.toUpperCase()}</b>
+          </p>
           {auth.user?.admin && (
             <div onMouseEnter={showModal} onMouseLeave={hideModal}>
               <div className="settings-button"></div>

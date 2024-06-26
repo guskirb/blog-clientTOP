@@ -43,6 +43,46 @@
   }
 }
 
+.nav__buttons {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav__link {
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.nav__link:hover {
+  font-weight: 500;
+}
+
+.active {
+  font-weight: 500;
+}
+
+.active::after {
+  display: flex;
+  content:"";
+  height: 1px;
+  background: #000000;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 100%;
+}
+
+.nav__link::after {
+  display: flex;
+  content:"";
+  height: 1px;
+  background: #000000;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
 .auth-buttons {
   display: flex;
   align-items: center;
@@ -87,17 +127,16 @@
 }
 
 .pill-button {
-  border-radius: 50px;
-  background-color: blue;
-  color: white;
-  padding: 0.6em;
-  padding-inline: 1.5em;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  padding: 0.4em;
+  padding-inline: 1em;
   font-size: 0.8em;
-  border: none;
   height: fit-content;
 }
 
 .pill-button:hover {
-  background-color: rgb(51, 51, 255);
-  border: none;
+  background-color: black;
+  color: white;
 }
