@@ -1,18 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import unescape from "validator/lib/unescape";
 import "./home.css";
 import Spinner from "../../components/spinner/spinner";
 import { getPosts } from "../../api/posts";
 
 export default function Home() {
+  const navigate = useNavigate();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
   });
 
-  const listPosts = posts?.map((post) => (
-    <Link to={`/post/${post._id}`} key={post._id} className="animation__container">
+  const listPosts = posts?.slice(3).map((post) => (
+    <Link
+      to={`/post/${post._id}`}
+      key={post._id}
+      className="animation__container"
+    >
       <div className="post_container">
         <div
           className="post_image"
@@ -23,9 +28,16 @@ export default function Home() {
         <div className="post_header">
           <h4>{unescape(post.title)}</h4>
           <div className="post_lower">
-            <Link to={`/category/${post.category}`}>
-              <div className="post-category">{post.category}</div>
-            </Link>
+            <div
+              className="post-category"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                navigate(`/category/${post.category}`);
+              }}
+            >
+              {post.category}
+            </div>
             <p>{post.date_formatted}</p>
           </div>
         </div>
@@ -57,11 +69,16 @@ export default function Home() {
               }}
             >
               <div className="post__title">
-                <Link to={`/category/${posts[0].category}`}>
-                  <div className="post-category grid-category">
-                    {posts[0].category}
-                  </div>
-                </Link>
+                <div
+                  className="post-category grid-category"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    navigate(`/category/${posts[0].category}`);
+                  }}
+                >
+                  {posts[0].category}
+                </div>
                 <h2>{unescape(posts[0].title)}</h2>
               </div>
             </div>
@@ -78,11 +95,16 @@ export default function Home() {
               }}
             >
               <div className="post__title">
-                <Link to={`/category/${posts[1].category}`}>
-                  <div className="post-category grid-category">
-                    {posts[1].category}
-                  </div>
-                </Link>
+                <div
+                  className="post-category grid-category"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    navigate(`/category/${posts[1].category}`);
+                  }}
+                >
+                  {posts[1].category}
+                </div>
                 <h2>{unescape(posts[1].title)}</h2>
               </div>
             </div>
@@ -100,11 +122,16 @@ export default function Home() {
               }}
             >
               <div className="post__title">
-                <Link to={`/category/${posts[2].category}`}>
-                  <div className="post-category grid-category">
-                    {posts[2].category}
-                  </div>
-                </Link>
+              <div
+                  className="post-category grid-category"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    navigate(`/category/${posts[2].category}`);
+                  }}
+                >
+                  {posts[2].category}
+                </div>
                 <h2>{unescape(posts[2].title)}</h2>
               </div>
             </div>
