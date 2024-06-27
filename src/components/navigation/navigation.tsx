@@ -1,24 +1,14 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import AuthUser from "../../api/auth";
-import { getUser } from "../../api/users";
 import "./navigation.css";
 
 import Dropdown from "./dropdown";
 
 export default function Navigation() {
-  const { auth, setAuth }: any = useAuth();
+  const { auth }: any = useAuth();
   const [delayHandler, setDelayHandler] = useState(null);
   const [modal, setModal] = useState(false);
-  const navigate = useNavigate();
-
-  async function onLogout() {
-    AuthUser.logOut();
-    const response = await getUser();
-    setAuth(response);
-    navigate("/", { replace: true });
-  }
 
   function showModal() {
     clearTimeout(delayHandler);
@@ -105,9 +95,9 @@ export default function Navigation() {
               {modal && <Dropdown />}
             </div>
           )}
-          <button className="pill-button" onClick={onLogout}>
-            LOG OUT
-          </button>
+          <Link to="logout">
+            <button className="pill-button">LOG OUT</button>
+          </Link>
         </div>
       ) : (
         <div className="auth-buttons">

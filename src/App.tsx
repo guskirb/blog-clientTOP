@@ -6,6 +6,7 @@ import AllPosts from "./pages/all-posts/all-posts";
 import PostByCategory from "./pages/all-posts/post-by-category";
 import LogIn from "./pages/auth/login";
 import SignUp from "./pages/auth/signup";
+import LogOut from "./components/auth/logout";
 import Layout from "./components/layout/layout";
 import RequireAuth from "./components/auth/require.auth";
 import Admin from "./components/auth/admin";
@@ -47,6 +48,10 @@ function App() {
             {
               path: "/signup",
               element: <SignUp />,
+            },
+            {
+              path: "/logout",
+              element: <LogOut />,
             },
             {
               element: <Admin />,
