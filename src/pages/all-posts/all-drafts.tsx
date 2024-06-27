@@ -11,13 +11,15 @@ export default function AllDrafts() {
     queryFn: getDrafts,
   });
 
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   useEffect(() => {
     document.title = "Drafts";
   }, []);
 
-  return <ListPosts posts={posts} title={'Drafts'}/>;
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  return (
+    <ListPosts posts={posts} title={"Drafts"} category={null} page={null} />
+  );
 }
