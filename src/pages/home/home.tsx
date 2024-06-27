@@ -166,7 +166,7 @@ export default function Home() {
       <div className="recent__title">
         <h2 className="recent-header">Recent Posts</h2>
         <div className="recent-line"></div>
-        <Link to={"/all"}>
+        <Link to={"/all/page/1"}>
           <p className="recent__view-all">View All</p>
         </Link>
       </div>

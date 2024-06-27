@@ -44,7 +44,7 @@ export default function Post() {
       <div className="path">
         <Link to={"/"}>Home</Link>
         &gt;
-        <Link to={`/category/${post.category}`}>{post.category}</Link>
+        <Link to={`/${post.category}/page/1`}>{post.category}</Link>
       </div>
       <div className="title">
         <div className="title-header">
@@ -79,7 +79,7 @@ export default function Post() {
       <div className="comment__title">
         <h2 className="comment-header">Recent Posts</h2>
         <div className="comment-line"></div>
-        <Link to={"/all"}>
+        <Link to={"/all/page/1"}>
           <p className="recent__view-all">View All</p>
         </Link>
       </div>

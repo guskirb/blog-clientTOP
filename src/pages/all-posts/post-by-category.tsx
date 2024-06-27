@@ -16,5 +16,7 @@ export default function PostByCategory() {
     return <Spinner />;
   }
 
-  return <ListPosts posts={posts} title={category} />;
+  return (
+    <ListPosts posts={posts} title={category} page={page} category={category} />
+  );
 }

@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { unescape } from "validator";
 import "./list-post.css";
 
-export default function ListPosts({ posts, title }) {
+export default function ListPosts({ posts, title, category, page }) {
   const navigate = useNavigate();
   const listPosts = posts.posts?.map((post) => (
     <Link
@@ -47,13 +47,26 @@ export default function ListPosts({ posts, title }) {
       </div>
     );
   }
-
+  console.log;
   return (
     <div className="all-posts__container">
       <h2 className="posts__header">
         {title.charAt(0).toUpperCase() + title.slice(1)}
       </h2>
       <div className="all-posts_grid_container">{listPosts}</div>
+      <div className="pagination">
+        {parseInt(page) !== 1 && posts.total && (
+          <Link to={`/${category}/page/${page - 1}`}>
+            <div className="left-arrow-button"></div>
+          </Link>
+        )}
+        <h4>{page}</h4>
+        {posts.total !== parseInt(page) && posts.total && (
+          <Link to={`/${category}/page/${parseInt(page) + 1}`}>
+            <div className="right-arrow-button"></div>
+          </Link>
+        )}
+      </div>
     </div>
   );
 }
