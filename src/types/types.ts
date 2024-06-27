@@ -12,7 +12,7 @@ export type PropTypes = {
   category?: any;
   page?: any;
   onSubmit?: any;
-  post?: PostTypes;
+  post?: any;
   rootErrors?: any;
 };
 
