@@ -4,11 +4,11 @@ export type PropTypes = {
   refetch?: any;
   isLoading?: boolean;
   posts?: {
-    posts: PostTypes;
+    posts: Array<PostTypes>;
     page: string;
     total: number;
   };
-  title?: string;
+  title?: any;
   category?: any;
   page?: any;
   onSubmit?: any;
@@ -24,6 +24,7 @@ export type PostTypes = {
   public: boolean;
   _id: string;
   date_formatted: string;
+  posts: Array<PostTypes>;
 };
 
 export type CommentTypes = {
@@ -34,4 +35,25 @@ export type CommentTypes = {
     _id: string;
   };
   _id: string;
+};
+
+export type ResponseTypes = {
+  expires: string;
+  token: string;
+};
+
+export type DataTypes = {
+  username?: string;
+  email?: string;
+  password?: string;
+  confirm?: string;
+  comment?: string;
+  title?: string;
+  category?: string;
+  image_url?: string;
+  post?: string;
+  public?: boolean;
+  _id?: string;
+  date_formatted?: string;
+  posts?: Array<PostTypes>;
 };

@@ -1,9 +1,6 @@
 import axios from "./axios";
 
-type Data = {
-  title: string;
-  post: string;
-};
+import { DataTypes } from "../types/types";
 
 export function getHomePosts() {
   return axios
@@ -40,14 +37,14 @@ export function getRecentPosts() {
     .catch((error) => error.response);
 }
 
-export function newPost(data: Data) {
+export function newPost(data: DataTypes) {
   return axios
     .post("/posts", data)
     .then((response) => response.data)
     .catch((error) => error.response);
 }
 
-export function editPost(data: Data, postId: string) {
+export function editPost(data: DataTypes, postId: string) {
   return axios
     .post(`/posts/${postId}/update`, data)
     .then((response) => response.data)

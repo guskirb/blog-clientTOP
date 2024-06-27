@@ -6,7 +6,7 @@ import { PropTypes } from "../../types/types";
 
 export default function ListPosts({ posts, title, category, page }: PropTypes) {
   const navigate = useNavigate();
-  const listPosts = posts.posts?.map((post) => (
+  const listPosts = posts?.posts?.map((post) => (
     <Link
       to={`/post/${post._id}`}
       key={post._id}
@@ -39,7 +39,7 @@ export default function ListPosts({ posts, title, category, page }: PropTypes) {
     </Link>
   ));
 
-  if (posts.posts?.length === 0) {
+  if (posts?.posts?.length === 0) {
     return (
       <div className="all-posts__container">
         <h2 className="posts__header">
@@ -57,13 +57,13 @@ export default function ListPosts({ posts, title, category, page }: PropTypes) {
       </h2>
       <div className="all-posts_grid_container">{listPosts}</div>
       <div className="pagination">
-        {parseInt(page) !== 1 && posts.total && (
+        {parseInt(page) !== 1 && posts?.total && (
           <Link to={`/${category}/page/${parseInt(page) - 1}`}>
             <div className="left-arrow-button"></div>
           </Link>
         )}
         <h4>{page}</h4>
-        {posts.total !== parseInt(page) && posts.total && (
+        {posts?.total !== parseInt(page) && posts?.total && (
           <Link to={`/${category}/page/${parseInt(page) + 1}`}>
             <div className="right-arrow-button"></div>
           </Link>

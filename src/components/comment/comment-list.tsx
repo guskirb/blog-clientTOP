@@ -8,7 +8,7 @@ import { CommentTypes } from "../../types/types";
 export default function CommentList({ postId, comments, refetch }: PropTypes) {
   const { auth }: any = useAuth();
 
-  async function onDelete(postId: string, commentId: string) {
+  async function onDelete(postId: any, commentId: string) {
     await deleteComment(postId, commentId);
     refetch();
   }

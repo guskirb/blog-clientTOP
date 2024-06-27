@@ -9,6 +9,7 @@ import { editPost } from "../../api/posts";
 const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
   image_url: z.string().min(1, { message: "Image is required" }),
+  category: z.string().min(1, { message: "Category is required" }),
   post: z.string().min(1, { message: "Post is required" }),
 });
 
