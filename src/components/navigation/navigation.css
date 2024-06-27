@@ -100,9 +100,9 @@
 
 .settings-dropdown {
   position: absolute;
-  background-color: red;
+  background-color: #242424;
+  color: white;
   width: 200px;
-  height: 100px;
   top: 65px;
   right: 30px;
   border-radius: 0 0 5px 5px;
@@ -124,6 +124,14 @@
 
 .settings-dropdown > ul {
   list-style: none;
+}
+
+.dropdown-link {
+  color: white;
+}
+
+.dropdown-link:hover {
+  font-weight: 500;
 }
 
 .pill-button {

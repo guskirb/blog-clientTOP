@@ -5,12 +5,12 @@ export default function Dropdown() {
   return (
     <div className="settings-dropdown">
       <ul>
-        <li>
-          <Link to="/new-post">New Post</Link>
-        </li>
-        <li>
-        <Link to="/drafts">Drafts</Link>
-        </li>
+        <Link to="/new-post">
+          <li className="dropdown-link">New Post</li>
+        </Link>
+        <Link to="/drafts">
+          <li className="dropdown-link">Drafts</li>
+        </Link>
       </ul>
     </div>
   );
