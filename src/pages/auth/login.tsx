@@ -39,7 +39,7 @@ export default function LogIn() {
       } else {
         AuthUser.setLocalStorage(response);
         setAuth(response);
-        navigate(from, { replace: true });
+        window.location.href="/"
       }
     } catch (err) {
       setError("password", {

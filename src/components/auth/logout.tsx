@@ -17,11 +17,10 @@ export default function LogOut() {
     }
     logout();
     setIsLoading(false);
+    window.location.href = "/";
   }, []);
 
   if (isLoading) {
     return <Spinner />;
   }
-
-  return <Navigate to="/" />;
 }
