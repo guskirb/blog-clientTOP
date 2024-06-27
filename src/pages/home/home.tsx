@@ -3,16 +3,16 @@ import { useNavigate, Link } from "react-router-dom";
 import unescape from "validator/lib/unescape";
 import "./home.css";
 import Spinner from "../../components/spinner/spinner";
-import { getPosts } from "../../api/posts";
+import { getHomePosts } from "../../api/posts";
 
 export default function Home() {
   const navigate = useNavigate();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts"],
-    queryFn: getPosts,
+    queryFn: getHomePosts,
   });
-
-  const listPosts = posts?.slice(3).map((post) => (
+  console.log(posts);
+  const listPosts = posts?.posts.slice(3).map((post) => (
     <Link
       to={`/post/${post._id}`}
       key={post._id}
@@ -33,7 +33,7 @@ export default function Home() {
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                navigate(`/category/${post.category}`);
+                navigate(`/${post.category}/page/1`);
               }}
             >
               {post.category}
@@ -49,23 +49,23 @@ export default function Home() {
     return <Spinner />;
   }
 
-  if (posts.length === 0) {
+  if (posts?.posts.length === 0) {
     return <div>Theres nothing here.</div>;
   }
 
   return (
     <div className="home">
-      {posts.length >= 3 ? (
+      {posts?.posts.length >= 3 ? (
         <div className="grid">
           <Link
-            to={`/post/${posts[0]._id}`}
-            key={posts[0]._id}
+            to={`/post/${posts?.posts[0]._id}`}
+            key={posts?.posts[0]._id}
             className="grid__item1 grid__item"
           >
             <div
               className="post__wrapper"
               style={{
-                backgroundImage: `url(${unescape(posts[0].image_url)})`,
+                backgroundImage: `url(${unescape(posts?.posts[0].image_url)})`,
               }}
             >
               <div className="post__title">
@@ -74,24 +74,24 @@ export default function Home() {
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
-                    navigate(`/category/${posts[0].category}`);
+                    navigate(`/${posts?.posts[0].category}/page/1`);
                   }}
                 >
-                  {posts[0].category}
+                  {posts?.posts[0].category}
                 </div>
-                <h2>{unescape(posts[0].title)}</h2>
+                <h2>{unescape(posts?.posts[0].title)}</h2>
               </div>
             </div>
           </Link>
           <Link
-            to={`/post/${posts[1]._id}`}
-            key={posts[1]._id}
+            to={`/post/${posts?.posts[1]._id}`}
+            key={posts?.posts[1]._id}
             className="grid__item2 grid__item"
           >
             <div
               className="post__wrapper"
               style={{
-                backgroundImage: `url(${unescape(posts[1].image_url)})`,
+                backgroundImage: `url(${unescape(posts?.posts[1].image_url)})`,
               }}
             >
               <div className="post__title">
@@ -100,39 +100,39 @@ export default function Home() {
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
-                    navigate(`/category/${posts[1].category}`);
+                    navigate(`/${posts?.posts[1].category}/page/1`);
                   }}
                 >
-                  {posts[1].category}
+                  {posts?.posts[1].category}
                 </div>
-                <h2>{unescape(posts[1].title)}</h2>
+                <h2>{unescape(posts?.posts[1].title)}</h2>
               </div>
             </div>
           </Link>
           <div></div>
           <Link
-            to={`/post/${posts[2]._id}`}
-            key={posts[2]._id}
+            to={`/post/${posts?.posts[2]._id}`}
+            key={posts?.posts[2]._id}
             className="grid__item3 grid__item"
           >
             <div
               className="post__wrapper"
               style={{
-                backgroundImage: `url(${unescape(posts[2].image_url)})`,
+                backgroundImage: `url(${unescape(posts?.posts[2].image_url)})`,
               }}
             >
               <div className="post__title">
-              <div
+                <div
                   className="post-category grid-category"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
-                    navigate(`/category/${posts[2].category}`);
+                    navigate(`/${posts?.posts[2].category}/page/1`);
                   }}
                 >
-                  {posts[2].category}
+                  {posts?.posts[2].category}
                 </div>
-                <h2>{unescape(posts[2].title)}</h2>
+                <h2>{unescape(posts?.posts[2].title)}</h2>
               </div>
             </div>
           </Link>
@@ -140,16 +140,25 @@ export default function Home() {
       ) : (
         <div className="main__post">
           <Link
-            to={`/post/${posts[0]._id}`}
-            key={posts[0]._id}
+            to={`/post/${posts?.posts[0]._id}`}
+            key={posts?.posts[0]._id}
             className="main-post1"
             style={{
-              backgroundImage: `url(${unescape(posts[0].image_url)})`,
+              backgroundImage: `url(${unescape(posts?.posts[0].image_url)})`,
             }}
           >
             <div className="post__title">
-              <div>{posts[0].category}</div>
-              <h2>{unescape(posts[0].title)}</h2>
+              <div
+                className="post-category grid-category"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  navigate(`/${posts?.posts[0].category}/page/1`);
+                }}
+              >
+                {posts?.posts[0].category}
+              </div>
+              <h2>{unescape(posts?.posts[0].title)}</h2>
             </div>
           </Link>
         </div>

@@ -4,7 +4,7 @@ import "./list-post.css";
 
 export default function ListPosts({ posts, title }) {
   const navigate = useNavigate();
-  const listPosts = posts?.map((post) => (
+  const listPosts = posts.posts?.map((post) => (
     <Link
       to={`/post/${post._id}`}
       key={post._id}
@@ -25,7 +25,7 @@ export default function ListPosts({ posts, title }) {
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                navigate(`/category/${post.category}`);
+                navigate(`/${post.category}/page/1`);
               }}
             >
               {post.category}
@@ -37,7 +37,7 @@ export default function ListPosts({ posts, title }) {
     </Link>
   ));
 
-  if (posts?.length === 0) {
+  if (posts.posts?.length === 0) {
     return (
       <div className="all-posts__container">
         <h2 className="posts__header">

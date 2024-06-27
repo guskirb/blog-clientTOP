@@ -33,12 +33,8 @@ function App() {
               element: <Home />,
             },
             {
-              path: "/all",
+              path: "/all/page/:page",
               element: <AllPosts />,
-            },
-            {
-              path: "/category/:category",
-              element: <PostByCategory />,
             },
             {
               path: "/post/:postId",
@@ -68,6 +64,10 @@ function App() {
                   element: <AllDrafts />,
                 },
               ],
+            },
+            {
+              path: "/:category/page/:page",
+              element: <PostByCategory />,
             },
           ],
         },

@@ -44,7 +44,7 @@ export default function Navigation() {
         <ul className="nav__buttons">
           <li>
             <NavLink
-              to="/all"
+              to="/all/page/1"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : "" + "nav__link"
               }
@@ -54,7 +54,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink
-              to="/category/travel"
+              to="/travel/page/1"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : "" + "nav__link"
               }
@@ -64,7 +64,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink
-              to="/category/sport"
+              to="/sport/page/1"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : "" + "nav__link"
               }
@@ -74,7 +74,7 @@ export default function Navigation() {
           </li>
           <li>
             <NavLink
-              to="/category/tech"
+              to="/tech/page/1"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : "" + "nav__link"
               }

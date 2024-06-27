@@ -10,7 +10,7 @@ export default function RecentPosts({ postId }) {
   const navigate = useNavigate();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["recent"],
-    queryFn: () => getRecentPosts(),
+    queryFn: getRecentPosts,
   });
 
   if (isLoading) {
@@ -21,8 +21,8 @@ export default function RecentPosts({ postId }) {
     );
   }
 
-  const listPosts = posts
-    ?.filter((post: object) => post._id !== postId)
+  const listPosts = posts?.posts
+    .filter((post: object) => post._id !== postId)
     .slice(0, 3)
     .map((post) => (
       <Link to={`/post/${post._id}`} key={post._id}>
@@ -41,7 +41,7 @@ export default function RecentPosts({ postId }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
-                  navigate(`/category/${post.category}`);
+                  navigate(`/${post.category}/page/1`);
                 }}
               >
                 {post.category}

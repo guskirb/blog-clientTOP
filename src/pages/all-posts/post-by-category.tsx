@@ -6,10 +6,10 @@ import ListPosts from "../../components/list-posts/list-posts";
 import Spinner from "../../components/spinner/spinner";
 
 export default function PostByCategory() {
-  const { category } = useParams();
+  const { category, page } = useParams();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts", category],
-    queryFn: () => getByCategory(category),
+    queryFn: () => getByCategory(page, category),
   });
 
   if (isLoading) {

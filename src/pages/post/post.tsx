@@ -49,7 +49,7 @@ export default function Post() {
       <div className="title">
         <div className="title-header">
           <div className="category-date">
-            <Link to={`/category/${post.category}`}>
+            <Link to={`/${post.category}/page/1`}>
               <div className="post-category">{post.category}</div>
             </Link>
             <p>{post.date_formatted}</p>

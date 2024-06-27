@@ -5,17 +5,24 @@ type Data = {
   post: string;
 };
 
-export function getPosts() {
+export function getHomePosts() {
   return axios
-    .get("/posts")
-    .then((response) => response.data.posts)
+    .get("/posts?page=1&limit=9")
+    .then((response) => response.data)
+    .catch((error) => error.response);
+}
+
+export function getPosts(page: string) {
+  return axios
+    .get(`/posts?page=${page}&limit=12`)
+    .then((response) => response.data)
     .catch((error) => error.response);
 }
 
 export function getDrafts() {
   return axios
     .get("/posts/private")
-    .then((response) => response.data.posts)
+    .then((response) => response.data)
     .catch((error) => error.response);
 }
 
@@ -28,8 +35,8 @@ export function getPost(postId: string) {
 
 export function getRecentPosts() {
   return axios
-    .get("/posts/recent")
-    .then((response) => response.data.posts)
+    .get("/posts?page=1&limit=4")
+    .then((response) => response.data)
     .catch((error) => error.response);
 }
 
@@ -54,9 +61,9 @@ export function deletePost(postId: string) {
     .catch((error) => error.response);
 }
 
-export function getByCategory(category: string) {
+export function getByCategory(page: string, category: string) {
   return axios
-    .get(`/posts/category/${category}`)
-    .then((response) => response.data.posts)
+    .get(`/posts?page=${page}&limit=12&category=${category}`)
+    .then((response) => response.data)
     .catch((error) => error.response);
 }
