@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import AuthUser from "../../api/auth";
@@ -56,6 +57,10 @@ export default function SignUp() {
       });
     }
   };
+
+  useEffect(() => {
+    document.title = "Sign Up";
+  }, []);
 
   if (isSubmitting) {
     return <Spinner />;

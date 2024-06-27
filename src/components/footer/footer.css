@@ -22,6 +22,7 @@
     flex-flow: column;
     gap: 10px;
     font-weight: 300;
+    width: fit-content;
 }
 
 .footer__main > div > ul > li:first-child {

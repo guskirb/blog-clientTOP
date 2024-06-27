@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { newPost } from "../../api/posts";
@@ -39,6 +40,10 @@ export default function NewPost() {
       });
     }
   };
+
+  useEffect(() => {
+    document.title = "New Post";
+  }, []);
 
   return <PostForm onSubmit={onSubmit} post={null} rootErrors={errors} />;
 }

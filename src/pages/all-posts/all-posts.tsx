@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { getPosts } from "../../api/posts";
 import { useParams } from "react-router-dom";
 
@@ -11,6 +12,10 @@ export default function AllPosts() {
     queryKey: ["posts", page],
     queryFn: () => getPosts(page),
   });
+
+  useEffect(() => {
+    document.title = "All Posts";
+  }, []);
 
   if (isLoading) {
     return <Spinner />;

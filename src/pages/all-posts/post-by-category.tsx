@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { getByCategory } from "../../api/posts";
 import { useParams } from "react-router-dom";
 
@@ -11,6 +12,10 @@ export default function PostByCategory() {
     queryKey: ["posts", category],
     queryFn: () => getByCategory(page, category),
   });
+
+  useEffect(() => {
+    document.title = category.charAt(0).toUpperCase() + category.slice(1);
+  }, [category]);
 
   if (isLoading) {
     return <Spinner />;

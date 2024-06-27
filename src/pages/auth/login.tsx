@@ -1,5 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import AuthUser from "../../api/auth";
@@ -47,13 +48,22 @@ export default function LogIn() {
     }
   };
 
+  useEffect(() => {
+    document.title = "Log In";
+  }, []);
+
   if (isSubmitting) {
     return <Spinner />;
   }
 
   return (
     <div className="form__container">
-      <form action="" method="POST" onSubmit={handleSubmit(onSubmit)} className="auth_form">
+      <form
+        action=""
+        method="POST"
+        onSubmit={handleSubmit(onSubmit)}
+        className="auth_form"
+      >
         <h2>Log In</h2>
         <label htmlFor="username">User:</label>
         <input

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import unescape from "validator/lib/unescape";
 import "./home.css";
@@ -44,6 +45,10 @@ export default function Home() {
       </div>
     </Link>
   ));
+
+  useEffect(() => {
+    document.title = "Blog";
+  }, []);
 
   if (isLoading) {
     return <Spinner />;

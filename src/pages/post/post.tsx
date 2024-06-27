@@ -1,4 +1,5 @@
 import { useParams, Navigate, Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import unescape from "validator/lib/unescape";
 import { getPost } from "../../api/posts";
@@ -30,6 +31,10 @@ export default function Post() {
     queryFn: () => getComment(postId!),
   });
 
+  useEffect(() => {
+    document.title = post?.title || "Blog";
+  }, [post]);
+  
   function onDelete() {
     deletePost(postId as string);
     navigate("/", { replace: true });

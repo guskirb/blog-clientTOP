@@ -43,7 +43,7 @@
 main {
   min-height: 90vh;
   width: 100%;
-  margin-block: 30px;
+  margin-block: 4vh;
   display: flex;
   justify-content: center;
 }

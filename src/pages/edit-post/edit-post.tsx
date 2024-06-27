@@ -1,5 +1,6 @@
 import PostForm from "../../components/post-form/post-form";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -41,6 +42,10 @@ export default function EditPost() {
       });
     }
   };
+
+  useEffect(() => {
+    document.title = "Edit Post";
+  }, []);
 
   return <PostForm onSubmit={onSubmit} post={post} rootErrors={errors} />;
 }
