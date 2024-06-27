@@ -82,6 +82,16 @@ export default function Navigation() {
               Tech
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/books/page/1"
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "active" : "" + "nav__link"
+              }
+            >
+              Books
+            </NavLink>
+          </li>
         </ul>
       </div>
       {auth.user ? (

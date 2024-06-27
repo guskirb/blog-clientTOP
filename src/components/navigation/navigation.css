@@ -10,7 +10,7 @@
   padding-inline: 2em;
 }
 
-.nav__header h1 {
+.nav__header > h1 {
   margin: 0;
   font-size: 2.5em;
   font-weight: 100;
