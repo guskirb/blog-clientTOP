@@ -23,5 +23,5 @@ export default function LogOut() {
     return <Spinner />;
   }
 
-  return <Navigate to="/" replace />;
+  return <Navigate to="/" />;
 }

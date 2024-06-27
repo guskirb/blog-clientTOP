@@ -75,58 +75,62 @@ export default function SignUp() {
         className="auth_form"
       >
         <h2>Sign Up</h2>
-        <label htmlFor="username">Username:</label>
-        <input
-          {...register("username")}
-          type="text"
-          name="username"
-          placeholder="Enter a username"
-          autoComplete="new-username"
-        />
-        {errors.username && (
-          <span className="error-message">{errors.username.message}</span>
-        )}
-        <label htmlFor="email">Email:</label>
-        <input
-          {...register("email")}
-          type="email"
-          name="email"
-          placeholder="Enter an email"
-          autoComplete="email"
-        />
-        {errors.email && (
-          <span className="error-message">{errors.email.message}</span>
-        )}
-        <label htmlFor="password">Password:</label>
-        <input
-          {...register("password")}
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          autoComplete="new-password"
-        />
-        {errors.password && (
-          <span className="error-message">{errors.password.message}</span>
-        )}
-        <label htmlFor="confirm">Confirm Password:</label>
-        <input
-          {...register("confirm")}
-          type="password"
-          name="confirm"
-          placeholder="Confirm password"
-          autoComplete="off"
-        />
-        {errors.confirm && (
-          <span className="error-message">{errors.confirm.message}</span>
-        )}
+        <div>
+          <input
+            {...register("username")}
+            type="text"
+            name="username"
+            placeholder="Username"
+            autoComplete="new-username"
+          />
+          {errors.username && (
+            <span className="error-message">{errors.username.message}</span>
+          )}
+        </div>
+        <div>
+          <input
+            {...register("email")}
+            type="email"
+            name="email"
+            placeholder="Email"
+            autoComplete="email"
+          />
+          {errors.email && (
+            <span className="error-message">{errors.email.message}</span>
+          )}
+        </div>
+        <div>
+          <input
+            {...register("password")}
+            type="password"
+            name="password"
+            placeholder="Password"
+            autoComplete="new-password"
+          />
+          {errors.password && (
+            <span className="error-message">{errors.password.message}</span>
+          )}
+        </div>
+        <div>
+          <input
+            {...register("confirm")}
+            type="password"
+            name="confirm"
+            placeholder="Confirm password"
+            autoComplete="off"
+          />
+          {errors.confirm && (
+            <span className="error-message">{errors.confirm.message}</span>
+          )}
+          {errors.root && (
+            <span className="error-message">{errors.root.message}</span>
+          )}
+        </div>
         <button>Sign Up</button>
-        {errors.root && (
-          <span className="error-message">{errors.root.message}</span>
-        )}
-        <p>
-          Already have an account? <Link to="/login">Log In</Link>
-        </p>
       </form>
+      <p>
+        Already have an account? <Link to="/login">Log In</Link>
+      </p>
     </div>
   );
 }

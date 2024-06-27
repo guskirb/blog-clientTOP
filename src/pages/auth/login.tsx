@@ -65,33 +65,35 @@ export default function LogIn() {
         className="auth_form"
       >
         <h2>Log In</h2>
-        <label htmlFor="username">User:</label>
-        <input
-          {...register("username")}
-          type="text"
-          name="username"
-          placeholder="Enter username or email"
-          autoComplete="username"
-        />
-        {errors.username && (
-          <span className="error-message">{errors.username.message}</span>
-        )}
-        <label htmlFor="password">Password:</label>
-        <input
-          {...register("password")}
-          type="password"
-          name="password"
-          placeholder="Enter password"
-          autoComplete="current-password"
-        />
-        {errors.password && (
-          <span className="error-message">{errors.password.message}</span>
-        )}
+        <div>
+          <input
+            {...register("username")}
+            type="text"
+            name="username"
+            placeholder="Username or email"
+            autoComplete="username"
+          />
+          {errors.username && (
+            <span className="error-message">{errors.username.message}</span>
+          )}
+        </div>
+        <div>
+          <input
+            {...register("password")}
+            type="password"
+            name="password"
+            placeholder="Password"
+            autoComplete="current-password"
+          />
+          {errors.password && (
+            <span className="error-message">{errors.password.message}</span>
+          )}
+        </div>
         <button>Log In</button>
-        <p>
-          Dont have an account? <Link to="/signup">Sign Up</Link>
-        </p>
       </form>
+      <p>
+        Dont have an account? <Link to="/signup">Sign Up</Link>
+      </p>
     </div>
   );
 }
