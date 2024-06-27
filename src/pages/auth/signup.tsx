@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import AuthUser from "../../api/auth";
-import useAuth from "../../hooks/useAuth";
 import Spinner from "../../components/spinner/spinner";
 import "./form.css";
 
@@ -32,7 +31,6 @@ type Data = {
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const { setAuth }: any = useAuth();
   const {
     register,
     handleSubmit,

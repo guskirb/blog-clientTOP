@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { z } from "zod";
@@ -18,9 +18,6 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 export default function LogIn() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from.pathname || "/";
   const { setAuth }: any = useAuth();
   const {
     register,
@@ -33,13 +30,13 @@ export default function LogIn() {
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      let response = await AuthUser.logIn(data);
+      let response = await AuthUser.logIn(data as any);
       if (response.status === 400) {
         throw new Error();
       } else {
         AuthUser.setLocalStorage(response);
         setAuth(response);
-        window.location.href="/"
+        window.location.href = "/";
       }
     } catch (err) {
       setError("password", {

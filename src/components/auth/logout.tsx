@@ -1,12 +1,11 @@
 import useAuth from "../../hooks/useAuth";
-import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AuthUser from "../../api/auth";
 import { getUser } from "../../api/users";
 import Spinner from "../spinner/spinner";
 
 export default function LogOut() {
-  const { auth, setAuth }: any = useAuth();
+  const { setAuth }: any = useAuth();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

@@ -6,6 +6,8 @@ import "./home.css";
 import Spinner from "../../components/spinner/spinner";
 import { getHomePosts } from "../../api/posts";
 
+import { PostTypes } from "../../types/types";
+
 export default function Home() {
   const navigate = useNavigate();
   const { data: posts, isLoading } = useQuery({
@@ -13,7 +15,7 @@ export default function Home() {
     queryFn: getHomePosts,
   });
   
-  const listPosts = posts?.posts.slice(3).map((post) => (
+  const listPosts = posts?.posts.slice(3).map((post: PostTypes) => (
     <Link
       to={`/post/${post._id}`}
       key={post._id}

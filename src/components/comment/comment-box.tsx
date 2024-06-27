@@ -5,13 +5,15 @@ import Spinner from "../spinner/spinner";
 import { newComment } from "../../api/comments";
 import "./comment.css";
 
+import { PropTypes } from "../../types/types";
+
 const schema = z.object({
   comment: z.string().min(1, { message: "Comment is required" }),
 });
 
 type FormFields = z.infer<typeof schema>;
 
-export default function CommentBox({ postId, refetch, isLoading }) {
+export default function CommentBox({ postId, refetch, isLoading }: PropTypes) {
   const {
     register,
     handleSubmit,

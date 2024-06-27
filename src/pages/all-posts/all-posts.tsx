@@ -10,7 +10,7 @@ export default function AllPosts() {
   const { page } = useParams();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts", page],
-    queryFn: () => getPosts(page),
+    queryFn: () => getPosts(page as string),
   });
 
   useEffect(() => {

@@ -4,9 +4,11 @@ import { getRecentPosts } from "../../api/posts";
 import { useQuery } from "@tanstack/react-query";
 import "./recent-posts.css";
 
+import { PropTypes, PostTypes } from "../../types/types";
+
 import Spinner from "../spinner/spinner";
 
-export default function RecentPosts({ postId }) {
+export default function RecentPosts({ postId }: PropTypes) {
   const navigate = useNavigate();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["recent"],
@@ -22,9 +24,9 @@ export default function RecentPosts({ postId }) {
   }
 
   const listPosts = posts?.posts
-    .filter((post: object) => post._id !== postId)
+    .filter((post: PostTypes) => post._id !== postId)
     .slice(0, 3)
-    .map((post) => (
+    .map((post: PostTypes) => (
       <Link to={`/post/${post._id}`} key={post._id}>
         <div className="recent-post">
           <div

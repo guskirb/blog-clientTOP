@@ -20,6 +20,6 @@ export default function AllDrafts() {
   }
 
   return (
-    <ListPosts posts={posts} title={"Drafts"} category={null} page={null} />
+    <ListPosts posts={posts} title={"Drafts"} page={null} />
   );
 }

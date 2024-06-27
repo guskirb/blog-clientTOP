@@ -2,7 +2,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { unescape } from "validator";
 import "./list-post.css";
 
-export default function ListPosts({ posts, title, category, page }) {
+import { PropTypes } from "../../types/types";
+
+export default function ListPosts({ posts, title, category, page }: PropTypes) {
   const navigate = useNavigate();
   const listPosts = posts.posts?.map((post) => (
     <Link
@@ -56,7 +58,7 @@ export default function ListPosts({ posts, title, category, page }) {
       <div className="all-posts_grid_container">{listPosts}</div>
       <div className="pagination">
         {parseInt(page) !== 1 && posts.total && (
-          <Link to={`/${category}/page/${page - 1}`}>
+          <Link to={`/${category}/page/${parseInt(page) - 1}`}>
             <div className="left-arrow-button"></div>
           </Link>
         )}

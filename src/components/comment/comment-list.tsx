@@ -2,15 +2,18 @@ import useAuth from "../../hooks/useAuth";
 import { DateTime } from "luxon";
 import { deleteComment } from "../../api/comments";
 
-export default function CommentList({ postId, comments, refetch }) {
+import { PropTypes } from "../../types/types";
+import { CommentTypes } from "../../types/types";
+
+export default function CommentList({ postId, comments, refetch }: PropTypes) {
   const { auth }: any = useAuth();
 
-  async function onDelete(postId, commentId) {
+  async function onDelete(postId: string, commentId: string) {
     await deleteComment(postId, commentId);
     refetch();
   }
 
-  const listComments = comments?.map((comment: object) => (
+  const listComments = comments?.map((comment: CommentTypes) => (
     <div className="comment__container" key={comment._id}>
       <div className="comment-text">
         <div>

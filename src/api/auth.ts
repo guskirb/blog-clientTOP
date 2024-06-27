@@ -41,20 +41,6 @@ class AuthUser {
     localStorage.removeItem("token");
     localStorage.removeItem("expires");
   }
-
-  getExpiration() {
-    const expires = localStorage.getItem("expires");
-    const expiresAt = JSON.parse(expires);
-    return moment(expiresAt);
-  }
-
-  isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
-  }
-
-  isLoggedOut() {
-    return !this.isLoggedIn();
-  }
 }
 
 export default new AuthUser();

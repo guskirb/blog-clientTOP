@@ -10,11 +10,13 @@ export default function PostByCategory() {
   const { category, page } = useParams();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["posts", category],
-    queryFn: () => getByCategory(page, category),
+    queryFn: () => getByCategory(page as string, category as string),
   });
 
   useEffect(() => {
-    document.title = category.charAt(0).toUpperCase() + category.slice(1);
+    document.title = category
+      ? category.charAt(0).toUpperCase() + category.slice(1)
+      : "Blog";
   }, [category]);
 
   if (isLoading) {

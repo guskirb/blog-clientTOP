@@ -6,6 +6,8 @@ import unescape from "validator/lib/unescape";
 import Spinner from "../spinner/spinner";
 import "./post-form.css";
 
+import { PropTypes } from "../../types/types";
+
 const schema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
   image_url: z.string().min(1, { message: "Image is required" }),
@@ -16,7 +18,7 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>;
 
-export default function PostForm({ onSubmit, post, rootErrors }) {
+export default function PostForm({ onSubmit, post, rootErrors }: PropTypes) {
   const {
     register,
     handleSubmit,

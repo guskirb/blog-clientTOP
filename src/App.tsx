@@ -8,7 +8,6 @@ import LogIn from "./pages/auth/login";
 import SignUp from "./pages/auth/signup";
 import LogOut from "./components/auth/logout";
 import Layout from "./components/layout/layout";
-import RequireAuth from "./components/auth/require.auth";
 import Admin from "./components/auth/admin";
 import PersistLogin from "./components/auth/persist.login";
 import NewPost from "./pages/new-post/new-post";

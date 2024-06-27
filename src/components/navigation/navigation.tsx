@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import "./navigation.css";
@@ -11,15 +11,15 @@ export default function Navigation() {
   const [modal, setModal] = useState(false);
 
   function showModal() {
-    clearTimeout(delayHandler);
+    clearTimeout(delayHandler as any);
     setModal(true);
   }
 
   function hideModal() {
     setDelayHandler(
-      setTimeout(() => {
+      window.setTimeout(() => {
         setModal(false);
-      }, 500)
+      }, 500) as any
     );
   }
 
