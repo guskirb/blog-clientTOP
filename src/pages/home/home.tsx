@@ -12,7 +12,7 @@ export default function Home() {
     queryKey: ["posts"],
     queryFn: getHomePosts,
   });
-  console.log(posts);
+  
   const listPosts = posts?.posts.slice(3).map((post) => (
     <Link
       to={`/post/${post._id}`}

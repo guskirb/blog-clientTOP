@@ -38,107 +38,117 @@ export default function PostForm({ onSubmit, post, rootErrors }) {
         onSubmit={handleSubmit(onSubmit)}
         className="post__form"
       >
-        <label htmlFor="title">Title:</label>
-        <input
-          {...register("title")}
-          className="new-post__input"
-          type="text"
-          name="title"
-          id="title"
-          defaultValue={post ? unescape(post.title) : ""}
-        />
-        {errors.title && (
-          <span className="error-message">{errors.title.message}</span>
-        )}
-        <label htmlFor="category">Category:</label>
-        <input
-          {...register("category")}
-          className="new-post__input"
-          type="text"
-          name="category"
-          id="category"
-          defaultValue={post ? unescape(post.category) : ""}
-        />
-        {errors.category && (
-          <span className="error-message">{errors.category.message}</span>
-        )}
-        <label htmlFor="image_url">Image URL:</label>
-        <input
-          {...register("image_url")}
-          className="new-post__input"
-          type="text"
-          name="image_url"
-          id="image_url"
-          defaultValue={post ? unescape(post.image_url) : ""}
-        />
-        {errors.image_url && (
-          <span className="error-message">{errors.image_url.message}</span>
-        )}
-        <label htmlFor="post">Post:</label>
-        <Editor
-          apiKey={process.env.TINYMCE_KEY}
-          initialValue={post ? unescape(post.post) : ""}
-          onEditorChange={(newValue) => {
-            setValue("post", newValue, { shouldValidate: true });
-          }}
-          init={{
-            body_class: "text_editor",
-            height: 500,
-            menubar: false,
-            plugins: [
-              "advlist",
-              "autolink",
-              "lists",
-              "link",
-              "image",
-              "charmap",
-              "preview",
-              "anchor",
-              "searchreplace",
-              "visualblocks",
-              "code",
-              "fullscreen",
-              "insertdatetime",
-              "media",
-              "table",
-              "code",
-              "help",
-              "wordcount",
-            ],
-            toolbar:
-              "undo redo | blocks | " +
-              "bold italic forecolor | alignleft aligncenter " +
-              "alignright alignjustify | bullist numlist outdent indent | " +
-              "removeformat | image media code",
-            content_style:
-              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-          }}
-        />
-        <input
-          {...register("post")}
-          id="post"
-          name="post"
-          style={{ display: "none" }}
-          defaultValue={post ? unescape(post.post) : ""}
-        />
-        {errors.post && (
-          <span className="error-message">{errors.post.message}</span>
-        )}
-        <div className="public-checkbox">
-          <label htmlFor="public" className="public-label">
-            Publish:
-          </label>
+        <div>
+          <label htmlFor="title">Title:</label>
           <input
-            {...register("public")}
-            type="checkbox"
-            className="checkbox"
-            defaultChecked={post ? post.public : true}
+            {...register("title")}
+            className="new-post__input"
+            type="text"
+            name="title"
+            id="title"
+            defaultValue={post ? unescape(post.title) : ""}
           />
+          {errors.title && (
+            <span className="error-message post-input-error">{errors.title.message}</span>
+          )}
+        </div>
+        <div>
+          <label htmlFor="category">Category:</label>
+          <input
+            {...register("category")}
+            className="new-post__input"
+            type="text"
+            name="category"
+            id="category"
+            defaultValue={post ? unescape(post.category) : ""}
+          />
+          {errors.category && (
+            <span className="error-message post-input-error">{errors.category.message}</span>
+          )}
+        </div>
+        <div>
+          <label htmlFor="image_url">Image URL:</label>
+          <input
+            {...register("image_url")}
+            className="new-post__input"
+            type="text"
+            name="image_url"
+            id="image_url"
+            defaultValue={post ? unescape(post.image_url) : ""}
+          />
+          {errors.image_url && (
+            <span className="error-message post-input-error">{errors.image_url.message}</span>
+          )}
+        </div>
+        <div>
+          <label htmlFor="post">Post:</label>
+          <Editor
+            apiKey={process.env.TINYMCE_KEY}
+            initialValue={post ? unescape(post.post) : ""}
+            onEditorChange={(newValue) => {
+              setValue("post", newValue, { shouldValidate: true });
+            }}
+            init={{
+              body_class: "text_editor",
+              height: 500,
+              menubar: false,
+              plugins: [
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "fullscreen",
+                "insertdatetime",
+                "media",
+                "table",
+                "code",
+                "help",
+                "wordcount",
+              ],
+              toolbar:
+                "undo redo | blocks | " +
+                "bold italic forecolor | alignleft aligncenter " +
+                "alignright alignjustify | bullist numlist outdent indent | " +
+                "removeformat | image media code",
+              content_style:
+                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+            }}
+          />
+          <input
+            {...register("post")}
+            id="post"
+            name="post"
+            style={{ display: "none" }}
+            defaultValue={post ? unescape(post.post) : ""}
+          />
+          {errors.post && (
+            <span className="error-message post-error">{errors.post.message}</span>
+          )}
+          {rootErrors?.root && (
+            <span className="error-message post-error">{rootErrors?.root.message}</span>
+          )}
+        </div>
+        <div>
+          <div className="public-checkbox">
+            <label htmlFor="public" className="public-label">
+              Publish:
+            </label>
+            <input
+              {...register("public")}
+              type="checkbox"
+              className="checkbox"
+              defaultChecked={post ? post.public : true}
+            />
+          </div>
         </div>
         <button>Post</button>
-        {rootErrors?.root && (
-          <span className="error-message">{rootErrors?.root.message}</span>
-        )}
       </form>
     </div>
   );

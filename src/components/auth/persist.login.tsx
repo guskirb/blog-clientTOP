@@ -20,7 +20,7 @@ export default function PersistLogin() {
     };
     !auth.user ? verifyUser() : setIsLoading(false);
   }, []);
-
+  
   if (isLoading) {
     return <Spinner />;
   }

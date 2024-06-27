@@ -55,16 +55,20 @@ export default function CommentBox({ postId, refetch, isLoading }) {
         className="comment-form"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <textarea
-          {...register("comment")}
-          className="comment-input"
-          name="comment"
-          id="comment"
-          placeholder="Enter a comment"
-        ></textarea>
-        {errors.comment && (
-          <span className="error-message">{errors.comment.message}</span>
-        )}
+        <div>
+          <textarea
+            {...register("comment")}
+            className="comment-input"
+            name="comment"
+            id="comment"
+            placeholder="Enter a comment"
+          ></textarea>
+          {errors.comment && (
+            <span className="error-message comment-error">
+              {errors.comment.message}
+            </span>
+          )}
+        </div>
         <button>Submit</button>
       </form>
     </div>

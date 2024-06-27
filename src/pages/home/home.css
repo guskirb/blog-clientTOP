@@ -191,6 +191,10 @@
   white-space: nowrap;
 }
 
+.recent__view-all:hover {
+  font-weight: 500;
+}
+
 .posts_grid_container {
   width: 100%;
   display: grid;

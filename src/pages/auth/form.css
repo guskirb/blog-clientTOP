@@ -23,6 +23,10 @@
   font-weight: 500;
 }
 
+.form__container > p > a:hover {
+  font-weight: 700;
+}
+
 .auth_form > div {
   width: 100%;
 }

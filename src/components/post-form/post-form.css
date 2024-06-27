@@ -9,10 +9,15 @@
 .post__form {
   display: flex;
   flex-flow: column;
+  background-color: white;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
 
 .new-post__input {
-    width: 50%;
+  width: 50%;
 }
 
 .public-checkbox {
@@ -21,12 +26,42 @@
   justify-content: flex-start;
 }
 
-.public-label, .checkbox {
+.public-label,
+.checkbox {
   width: fit-content;
+}
+
+.post-input-error {
+  transform: translateX(-575px) translateY(38px);
+}
+
+.post-error {
+  position: relative !important;
+}
+
+.post__form > button {
+  width: 100%;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  padding: 0.4em;
+  font-size: 1em;
+  height: fit-content;
+}
+
+.post__form > button:hover {
+  background-color: black;
+  color: white;
 }
 
 @media only screen and (max-width: 1200px) {
   .new-post__container {
     width: 90%;
+  }
+
+  .post-input-error {
+    position: relative !important;
+    left: -50%;
+    top: 30px;
   }
 }

@@ -13,9 +13,13 @@ export default function CommentList({ postId, comments, refetch }) {
   const listComments = comments?.map((comment: object) => (
     <div className="comment__container" key={comment._id}>
       <div className="comment-text">
-        <h3>{comment.author.username}</h3>
+        <div>
+          <h3>{comment.author.username.toUpperCase()}</h3>
+          <p className="comment-date">
+            {DateTime.fromISO(comment.date).toRelative()}
+          </p>
+        </div>
         <p style={{ whiteSpace: "pre-wrap" }}>{comment.comment}</p>
-        <p>{DateTime.fromISO(comment.date).toRelative()}</p>
       </div>
       {(comment.author._id === auth.user?._id || auth.user?.admin) && (
         <div
@@ -26,5 +30,5 @@ export default function CommentList({ postId, comments, refetch }) {
     </div>
   ));
 
-  return <>{listComments}</>;
+  return <div className="comment__wrapper">{listComments}</div>;
 }
