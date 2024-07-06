@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { getUser } from "../../api/users";
 import Spinner from "../spinner/spinner";
 import { useEffect, useState } from "react";
+import AuthUser from "../../api/auth";
 
 export default function PersistLogin() {
   const { auth, setAuth }: any = useAuth();
@@ -12,7 +13,13 @@ export default function PersistLogin() {
     const verifyUser = async () => {
       try {
         const response = await getUser();
-        setAuth(response);
+        if (response.status === 500) {
+          AuthUser.logOut();
+          const response = await getUser();
+          setAuth(response);
+        } else {
+          setAuth(response);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -20,7 +27,7 @@ export default function PersistLogin() {
     };
     !auth.user ? verifyUser() : setIsLoading(false);
   }, []);
-  
+
   if (isLoading) {
     return <Spinner />;
   }

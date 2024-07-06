@@ -10,43 +10,45 @@ import { PostTypes } from "../../types/types";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { data: posts = [], isLoading } = useQuery({
+  const { data: posts = [{ posts: [] }], isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: getHomePosts,
   });
 
-  const listPosts = posts?.posts.slice(3).map((post: PostTypes) => (
-    <Link
-      to={`/post/${post._id}`}
-      key={post._id}
-      className="animation__container"
-    >
-      <div className="post_container">
-        <div
-          className="post_image"
-          style={{
-            backgroundImage: `url(${unescape(post.image_url)})`,
-          }}
-        ></div>
-        <div className="post_header">
-          <h4>{unescape(post.title)}</h4>
-          <div className="post_lower">
-            <div
-              className="post-category"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                navigate(`/${post.category}/page/1`);
-              }}
-            >
-              {post.category}
+  const listPosts =
+    posts.posts !== undefined &&
+    posts?.posts.slice(3).map((post: PostTypes) => (
+      <Link
+        to={`/post/${post._id}`}
+        key={post._id}
+        className="animation__container"
+      >
+        <div className="post_container">
+          <div
+            className="post_image"
+            style={{
+              backgroundImage: `url(${unescape(post.image_url)})`,
+            }}
+          ></div>
+          <div className="post_header">
+            <h4>{unescape(post.title)}</h4>
+            <div className="post_lower">
+              <div
+                className="post-category"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  navigate(`/${post.category}/page/1`);
+                }}
+              >
+                {post.category}
+              </div>
+              <p>{post.date_formatted}</p>
             </div>
-            <p>{post.date_formatted}</p>
           </div>
         </div>
-      </div>
-    </Link>
-  ));
+      </Link>
+    ));
 
   useEffect(() => {
     document.title = "Blog";
@@ -56,7 +58,7 @@ export default function Home() {
     return <Spinner />;
   }
 
-  if (posts?.posts.length === 0) {
+  if (posts?.posts === undefined) {
     return <div>Theres nothing here.</div>;
   }
 
@@ -177,7 +179,9 @@ export default function Home() {
           <p className="recent__view-all">View All</p>
         </Link>
       </div>
-      <div className="posts_grid_container">{listPosts}</div>
+      <div className="posts_grid_container">
+        {posts?.posts !== undefined && listPosts}
+      </div>
     </div>
   );
 }
