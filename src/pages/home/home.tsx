@@ -10,11 +10,11 @@ import { PostTypes } from "../../types/types";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { data: posts, isLoading } = useQuery({
+  const { data: posts = [], isLoading } = useQuery({
     queryKey: ["posts"],
     queryFn: getHomePosts,
   });
-  
+
   const listPosts = posts?.posts.slice(3).map((post: PostTypes) => (
     <Link
       to={`/post/${post._id}`}
@@ -177,7 +177,7 @@ export default function Home() {
           <p className="recent__view-all">View All</p>
         </Link>
       </div>
-      <div className="posts_grid_container">{posts?.posts.length > 0 && listPosts}</div>
+      <div className="posts_grid_container">{listPosts}</div>
     </div>
   );
 }
