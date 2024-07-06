@@ -177,7 +177,7 @@ export default function Home() {
           <p className="recent__view-all">View All</p>
         </Link>
       </div>
-      <div className="posts_grid_container">{listPosts}</div>
+      <div className="posts_grid_container">{posts?.posts.length > 0 && listPosts}</div>
     </div>
   );
 }
